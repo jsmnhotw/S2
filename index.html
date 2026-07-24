@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slasify Quotation Generator</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="app-header">
+  <h1>Slasify Quotation Generator</h1>
+  <p class="subtitle">Country &rarr; Service &rarr; Vendor pricing, with markup applied automatically and live currency conversion.</p>
+</header>
+
+<main class="wizard">
+
+  <section class="step" id="step-country">
+    <h2><span class="step-num">1</span> Country</h2>
+    <select id="country-select">
+      <option value="">Select a country&hellip;</option>
+    </select>
+  </section>
+
+  <section class="step" id="step-service" hidden>
+    <h2><span class="step-num">2</span> Service type</h2>
+    <select id="service-select">
+      <option value="">Select a service type&hellip;</option>
+    </select>
+  </section>
+
+  <section class="step" id="step-vendor" hidden>
+    <h2><span class="step-num">3</span> Vendor</h2>
+    <div id="vendor-auto" class="vendor-auto" hidden>
+      <span class="badge badge-preferred">Preferred vendor</span>
+      <strong id="vendor-auto-name"></strong>
+      <button type="button" id="vendor-change-btn" class="link-btn">change vendor</button>
+    </div>
+    <select id="vendor-select" hidden>
+      <option value="">Select a vendor&hellip;</option>
+    </select>
+    <p id="vendor-tiebreak-note" class="hint" hidden>More than one preferred vendor is on file for this country/service &mdash; pick one.</p>
+  </section>
+
+  <section class="step" id="step-reference" hidden>
+    <h2><span class="step-num">4</span> Vendor reference terms</h2>
+    <div id="stale-banner" class="banner banner-warning" hidden></div>
+    <div id="reference-card" class="reference-card"></div>
+  </section>
+
+  <section class="step" id="step-calculator" hidden>
+    <h2><span class="step-num">5</span> Quote calculator</h2>
+    <div class="fee-tabs" id="fee-tabs"></div>
+
+    <div class="calc-inputs">
+      <label id="salary-field" hidden>
+        Gross salary (optional &mdash; needed for % based fees)
+        <div class="input-row">
+          <input type="number" id="salary-input" min="0" step="0.01" placeholder="e.g. 2000">
+          <select id="salary-currency"></select>
+        </div>
+      </label>
+      <label id="headcount-field" hidden>
+        Headcount (optional &mdash; needed for per-employee tiered fees)
+        <input type="number" id="headcount-input" min="1" step="1" placeholder="e.g. 5">
+      </label>
+    </div>
+
+    <div id="calc-result" class="calc-result"></div>
+  </section>
+
+  <section class="step" id="step-quote" hidden>
+    <h2><span class="step-num">6</span> Quotation summary</h2>
+    <div id="quote-summary" class="quote-summary"></div>
+  </section>
+
+</main>
+
+<footer class="app-footer">
+  <p>FX rates via <a href="https://frankfurter.dev" target="_blank" rel="noopener">Frankfurter</a> (ECB reference rates, updated daily). Data source: Slasify MPD.</p>
+</footer>
+
+<script src="js/markup.js"></script>
+<script src="js/fx.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
