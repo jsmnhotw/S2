@@ -5,13 +5,18 @@ const FEE_LABELS = {
   terminationFee: 'Termination Fee',
 };
 const FEE_ORDER = ['serviceFee', 'setupFee', 'deposit', 'terminationFee'];
+const COMMITTED_FEE_KEYS = ['serviceFee', 'setupFee', 'terminationFee']; // deposit has no markup, nothing to commit
 const CURRENCY_OPTIONS = ['USD', 'EUR', 'GBP', 'SAR', 'BHD', 'INR', 'JPY', 'AUD', 'HKD', 'PLN', 'CAD', 'AED', 'QAR', 'THB', 'MMK', 'PHP', 'IDR', 'EGP', 'KWD', 'CNY', 'CZK', 'MYR', 'NOK', 'OMR', 'CHF'];
+
+const DEFAULT_PAYMENT_TERMS = "Invoices are issued monthly in advance of each pay cycle. Payment is due within 15 days of the invoice date.\n[Placeholder - replace with Slasify's standard payment terms.]";
+const DEFAULT_DISCLAIMER = "This quotation is indicative and subject to confirmation of final employment terms, statutory requirements, and vendor rates in the country of employment. Prices are subject to exchange-rate fluctuation until invoiced. This document does not constitute a binding offer or contract.\n[Placeholder - replace with Slasify's standard legal disclaimer.]";
 
 let DATA = [];
 let INDEX = {}; // country -> serviceType -> [rows]
 let fxTable = null;
 
 let state = { country: null, serviceType: null, vendorRow: null, activeFee: 'serviceFee' };
+let committedValues = {}; // feeKey -> BD's typed-in final number for the client quote
 
 async function init() {
   const res = await fetch('data/mpd.json');
@@ -46,9 +51,12 @@ function wireEvents() {
   document.getElementById('service-select').addEventListener('change', onServiceChange);
   document.getElementById('vendor-select').addEventListener('change', onVendorPicked);
   document.getElementById('vendor-change-btn').addEventListener('click', onChangeVendorClick);
-  document.getElementById('salary-input').addEventListener('input', renderCalculator);
-  document.getElementById('salary-currency').addEventListener('change', renderCalculator);
-  document.getElementById('headcount-input').addEventListener('input', renderCalculator);
+  document.getElementById('salary-input').addEventListener('input', onSharedInputsChanged);
+  document.getElementById('salary-currency').addEventListener('change', onSharedInputsChanged);
+  document.getElementById('headcount-input').addEventListener('input', onSharedInputsChanged);
+  document.getElementById('to-finalize-btn').addEventListener('click', onToFinalizeClick);
+  document.getElementById('quote-currency-select').addEventListener('change', renderCommittedFees);
+  document.getElementById('generate-pdf-btn').addEventListener('click', onGeneratePdfClick);
 
   const salaryCur = document.getElementById('salary-currency');
   for (const c of CURRENCY_OPTIONS) {
@@ -58,11 +66,16 @@ function wireEvents() {
   }
 }
 
+function onSharedInputsChanged() {
+  renderCalculator();
+  if (!document.getElementById('step-finalize').hidden) renderCommittedFees();
+}
+
 function showStep(id, show = true) {
   document.getElementById(id).hidden = !show;
 }
 function hideFrom(stepIndex) {
-  const steps = ['step-service', 'step-vendor', 'step-reference', 'step-calculator', 'step-quote'];
+  const steps = ['step-service', 'step-vendor', 'step-reference', 'step-calculator', 'step-quote', 'step-finalize'];
   for (let i = stepIndex; i < steps.length; i++) showStep(steps[i], false);
 }
 
@@ -138,6 +151,7 @@ function onVendorPicked(e) {
 
 function onVendorResolved() {
   hideFrom(2);
+  committedValues = {};
   renderStaleBanner();
   renderReferenceCard();
   renderFeeTabs();
@@ -237,10 +251,10 @@ function renderCalculator() {
   if (result.uncalculable) {
     html += `<p class="hint">No computed figure — vendor terms aren't confirmed yet for this fee.</p>`;
   } else if (result.isLlmDerived) {
-    html += renderFiguresIfPossible(result, fxTable);
+    html += renderFiguresIfPossible(feeKey);
     html += `<p class="hint">Derived from a complex vendor fee structure — double-check against the raw vendor terms above before quoting.</p>`;
   } else {
-    html += renderFiguresIfPossible(result, fxTable);
+    html += renderFiguresIfPossible(feeKey);
   }
 
   out.innerHTML = html;
@@ -254,16 +268,26 @@ function getSalaryUsd() {
   return toUSD(val, cur, fxTable);
 }
 
-function renderFiguresIfPossible(result) {
-  if (!fxTable) return `<p class="hint">Loading live FX rates…</p>`;
+// Pure computation, shared by the calculator tab and the client-quote finalize step.
+// Returns { ok: true, low, high, isRange, origLow, origHigh, origCur, origIsRange, result }
+// or { ok: false, reason, result }.
+function computeFeeFigures(feeKey) {
+  const row = state.vendorRow;
+  const fee = row.fees[feeKey];
+  const result = computeFee(fee, feeKey, row.serviceType);
+  if (result.uncalculable) return { ok: false, reason: 'uncalculable', result };
+  if (!fxTable) return { ok: false, reason: 'no-fx', result };
 
   let low = null, high = null, currency = 'USD';
 
-  if (result.vendorAmount) {
+  // Only serviceFee's flat/range/none cases pair vendorAmount with marginLow/marginHigh
+  // (a ranged margin). Setup/termination fee's flat case also carries vendorAmount (for
+  // reference display) but uses a single flat computedFlat instead - checked separately below.
+  if (result.vendorAmount && (result.marginLow !== undefined || result.marginHigh !== undefined)) {
     currency = result.vendorAmount.currency;
     const vLow = toUSD(result.vendorAmount.low ?? result.vendorAmount.amount, currency, fxTable);
     const vHigh = toUSD(result.vendorAmount.high ?? result.vendorAmount.amount, currency, fxTable);
-    if (vLow === null) return `<p class="hint">No FX rate available for ${currency} — cannot convert.</p>`;
+    if (vLow === null) return { ok: false, reason: 'no-fx-rate', currency, result };
     low = vLow + (result.marginLow ?? 0);
     high = vHigh + (result.marginHigh ?? 0);
   } else if (result.computedLow !== undefined) {
@@ -275,21 +299,21 @@ function renderFiguresIfPossible(result) {
     low = high = toUSD(result.computedFlat, currency, fxTable);
   } else if (result.pct !== undefined) {
     const salaryUsd = getSalaryUsd();
-    if (salaryUsd === null) return `<p class="hint">Enter gross salary above to compute a figure.</p>`;
+    if (salaryUsd === null) return { ok: false, reason: 'no-salary', result };
     const base = Math.max((salaryUsd * result.pct) / 100, result.minAmount ? toUSD(result.minAmount, result.minCurrency, fxTable) : 0);
     low = base + (result.marginLow ?? 0);
     high = base + (result.marginHigh ?? 0);
   } else if (result.months !== undefined) {
     const salaryUsd = getSalaryUsd();
-    if (salaryUsd === null) return `<p class="hint">Enter gross salary above to compute a figure.</p>`;
+    if (salaryUsd === null) return { ok: false, reason: 'no-salary', result };
     low = high = salaryUsd * result.months;
   } else {
-    return '';
+    return { ok: false, reason: 'no-figure', result };
   }
 
-  if (low === null) return `<p class="hint">No FX rate available — cannot convert.</p>`;
+  if (low === null) return { ok: false, reason: 'no-fx-rate', currency, result };
 
-  const origCur = state.vendorRow.fees[state.activeFee].currency || currency;
+  const origCur = fee.currency || currency;
   const origLowRaw = fromUSD(low, origCur, fxTable);
   const origHighRaw = fromUSD(high, origCur, fxTable);
 
@@ -303,6 +327,19 @@ function renderFiguresIfPossible(result) {
   const isRange = Math.abs(high - low) > 0.01;
   const origIsRange = origLow !== null && Math.abs(origHigh - origLow) > 0.01;
 
+  return { ok: true, low, high, isRange, origLow, origHigh, origCur, origIsRange, result };
+}
+
+function renderFiguresIfPossible(feeKey) {
+  const figures = computeFeeFigures(feeKey);
+  if (!figures.ok) {
+    if (figures.reason === 'no-fx') return `<p class="hint">Loading live FX rates…</p>`;
+    if (figures.reason === 'no-salary') return `<p class="hint">Enter gross salary above to compute a figure.</p>`;
+    if (figures.reason === 'no-fx-rate') return `<p class="hint">No FX rate available for ${figures.currency} — cannot convert.</p>`;
+    return '';
+  }
+
+  const { low, high, isRange, origLow, origHigh, origCur, origIsRange } = figures;
   let html = `<div class="result-figures">
     <div class="result-figure"><div class="label">USD</div><div class="value">$${fmtMoney(low)}${isRange ? '–$' + fmtMoney(high) : ''}</div></div>`;
   if (origCur !== 'USD' && origLow !== null) {
@@ -347,6 +384,177 @@ function renderQuoteSummary() {
       ${headcount ? `<tr><th>Headcount (input)</th><td>${escapeHtml(headcount)}</td></tr>` : ''}
       <tr><th>Pricing valid until</th><td>${escapeHtml(row.pricingValidUntil || '—')}</td></tr>
     </table>`;
+}
+
+function toISODate(d) {
+  return d.toISOString().slice(0, 10);
+}
+
+function formatDisplayDate(iso) {
+  if (!iso) return '—';
+  const d = new Date(iso + 'T00:00:00');
+  if (isNaN(d)) return iso;
+  return d.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+function onToFinalizeClick() {
+  showStep('step-finalize', true);
+  renderFinalizeStep();
+  document.getElementById('step-finalize').scrollIntoView({ behavior: 'smooth' });
+}
+
+function renderFinalizeStep() {
+  const dateInput = document.getElementById('quote-date-input');
+  const validInput = document.getElementById('quote-validuntil-input');
+  if (!dateInput.value) {
+    const today = new Date();
+    dateInput.value = toISODate(today);
+    validInput.value = toISODate(new Date(today.getTime() + 30 * 24 * 60 * 60 * 1000));
+  }
+  const paymentInput = document.getElementById('payment-terms-input');
+  if (!paymentInput.value) paymentInput.value = DEFAULT_PAYMENT_TERMS;
+  const disclaimerInput = document.getElementById('disclaimer-input');
+  if (!disclaimerInput.value) disclaimerInput.value = DEFAULT_DISCLAIMER;
+
+  renderCommittedFees();
+}
+
+// 'original' means each fee's own vendor-quoted currency (they can differ fee to fee);
+// 'USD' forces every line to USD regardless of what the vendor originally quoted in.
+function presentationCurrencyFor(feeKey) {
+  const mode = document.getElementById('quote-currency-select').value;
+  if (mode === 'USD') return 'USD';
+  const fee = state.vendorRow.fees[feeKey];
+  return fee.currency || 'USD';
+}
+
+function renderCommittedFees() {
+  const wrap = document.getElementById('committed-fees');
+  let html = '';
+
+  for (const feeKey of COMMITTED_FEE_KEYS) {
+    const figures = computeFeeFigures(feeKey);
+    const presentCur = presentationCurrencyFor(feeKey);
+    let guideLow = null, guideHigh = null, guideCur = 'USD', guideText;
+
+    if (figures.ok) {
+      if (presentCur !== 'USD' && figures.origCur === presentCur && figures.origLow !== null) {
+        guideLow = figures.origLow; guideHigh = figures.origHigh; guideCur = figures.origCur;
+      } else {
+        guideLow = figures.low; guideHigh = figures.high; guideCur = 'USD';
+      }
+      const range = Math.abs(guideHigh - guideLow) > 0.01 ? `${fmtMoney(guideLow)}–${fmtMoney(guideHigh)}` : fmtMoney(guideLow);
+      guideText = `Guide: ${guideCur} ${range} (floor: ${guideCur} ${fmtMoney(guideLow)})`;
+    } else if (figures.reason === 'no-salary') {
+      guideText = 'Enter gross salary above to see a guide figure.';
+    } else if (figures.reason === 'uncalculable') {
+      guideText = 'Vendor terms not yet confirmed for this fee — cannot quote.';
+    } else {
+      // e.g. an LLM-derived complex fee structure with no single computable number.
+      guideText = 'Complex vendor fee structure — no auto-computed guide. Check the formula in the calculator step above and enter your committed number directly.';
+    }
+
+    // Only block entry when the vendor's terms are genuinely unconfirmed (TBC) - a
+    // complex/uncomputable formula still needs BD to be able to type a final number.
+    const disabled = figures.reason === 'uncalculable';
+    const existingVal = committedValues[feeKey] !== undefined ? committedValues[feeKey] : (figures.ok ? guideLow : '');
+
+    html += `
+      <div class="committed-fee-row">
+        <div class="fee-name">${FEE_LABELS[feeKey]}</div>
+        <div class="guide-range">${escapeHtml(guideText)}</div>
+        <div class="input-row">
+          <input type="number" class="committed-input" data-fee="${feeKey}" step="0.01" value="${existingVal}" ${disabled ? 'disabled' : ''}>
+          <span class="committed-currency">${guideCur}</span>
+        </div>
+        <div class="margin-warning" id="warning-${feeKey}" hidden></div>
+      </div>`;
+  }
+
+  const row = state.vendorRow;
+  const depositResult = computeFee(row.fees.deposit, 'deposit', row.serviceType);
+  html += `
+    <div class="committed-fee-row">
+      <div class="fee-name">${FEE_LABELS.deposit}</div>
+      <div class="guide-range">${escapeHtml(depositResult.formula)} (pass-through, no markup)</div>
+    </div>`;
+
+  wrap.innerHTML = html;
+
+  wrap.querySelectorAll('.committed-input').forEach((input) => {
+    input.addEventListener('input', onCommittedInputChange);
+    onCommittedInputChange({ target: input });
+  });
+}
+
+function onCommittedInputChange(e) {
+  const feeKey = e.target.dataset.fee;
+  committedValues[feeKey] = e.target.value;
+
+  const warningEl = document.getElementById(`warning-${feeKey}`);
+  const figures = computeFeeFigures(feeKey);
+  const val = parseFloat(e.target.value);
+  if (!figures.ok || isNaN(val)) { warningEl.hidden = true; return; }
+
+  const presentCur = presentationCurrencyFor(feeKey);
+  const floor = (presentCur !== 'USD' && figures.origCur === presentCur && figures.origLow !== null) ? figures.origLow : figures.low;
+
+  if (floor !== null && val < floor) {
+    warningEl.hidden = false;
+    warningEl.textContent = `⚠ Below minimum margin — guide floor is ${presentCur} ${fmtMoney(floor)}.`;
+  } else {
+    warningEl.hidden = true;
+  }
+}
+
+function onGeneratePdfClick() {
+  const row = state.vendorRow;
+  const clientName = document.getElementById('client-name-input').value || '[Client name]';
+  const bdRep = document.getElementById('bd-rep-input').value || '[BD rep name]';
+  const quoteDate = document.getElementById('quote-date-input').value;
+  const validUntil = document.getElementById('quote-validuntil-input').value;
+  const headcount = document.getElementById('headcount-input').value;
+  const paymentTerms = document.getElementById('payment-terms-input').value;
+  const disclaimer = document.getElementById('disclaimer-input').value;
+
+  const feeRowsHtml = COMMITTED_FEE_KEYS.map((feeKey) => {
+    const input = document.querySelector(`.committed-input[data-fee="${feeKey}"]`);
+    const cur = presentationCurrencyFor(feeKey);
+    const display = input && input.value !== '' ? `${cur} ${fmtMoney(parseFloat(input.value))}` : '—';
+    return `<tr><td>${escapeHtml(FEE_LABELS[feeKey])}</td><td>${escapeHtml(display)}</td></tr>`;
+  }).join('');
+
+  const depositResult = computeFee(row.fees.deposit, 'deposit', row.serviceType);
+  const depositRowHtml = `<tr><td>${escapeHtml(FEE_LABELS.deposit)}</td><td>${escapeHtml(depositResult.formula)}</td></tr>`;
+
+  document.getElementById('print-quote').innerHTML = `
+    <div class="doc-letterhead">
+      <div class="doc-logo">slasify</div>
+      <div class="doc-meta">
+        Quote date: ${escapeHtml(formatDisplayDate(quoteDate))}<br>
+        Valid until: ${escapeHtml(formatDisplayDate(validUntil))}
+      </div>
+    </div>
+    <h1 class="doc-title">Employment Cost Quotation</h1>
+    <p class="doc-subtitle">Prepared for ${escapeHtml(clientName)} &mdash; ${escapeHtml(row.country)}, ${escapeHtml(row.serviceType)}${headcount ? ` &middot; Headcount: ${escapeHtml(headcount)}` : ''}</p>
+
+    <div class="doc-section-label">Fee Breakdown</div>
+    <table class="doc-fee-table">
+      <thead><tr><th>Item</th><th>Amount</th></tr></thead>
+      <tbody>${feeRowsHtml}${depositRowHtml}</tbody>
+    </table>
+
+    <div class="doc-section-label">Payment Terms</div>
+    <p class="doc-fine-print">${escapeHtml(paymentTerms)}</p>
+
+    <div class="doc-section-label">Terms &amp; Conditions</div>
+    <p class="doc-fine-print">${escapeHtml(disclaimer)}</p>
+
+    <div class="doc-footer">Prepared by ${escapeHtml(bdRep)} &middot; Slasify</div>
+    <div class="doc-gradient-bar"></div>
+  `;
+
+  window.print();
 }
 
 init();

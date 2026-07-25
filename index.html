@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Slasify Quotation Generator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -71,6 +74,44 @@
   <section class="step" id="step-quote" hidden>
     <h2><span class="step-num">6</span> Quotation summary</h2>
     <div id="quote-summary" class="quote-summary"></div>
+    <button type="button" id="to-finalize-btn" class="btn-primary">Continue to finalize client quote &rarr;</button>
+  </section>
+
+  <section class="step" id="step-finalize" hidden>
+    <h2><span class="step-num">7</span> Finalize client quote</h2>
+
+    <div class="finalize-grid">
+      <label>Client company name
+        <input type="text" id="client-name-input" placeholder="e.g. Acme Corp">
+      </label>
+      <label>BD rep name
+        <input type="text" id="bd-rep-input" placeholder="e.g. Jasmine Chang">
+      </label>
+      <label>Quote date
+        <input type="date" id="quote-date-input">
+      </label>
+      <label>Valid until
+        <input type="date" id="quote-validuntil-input">
+      </label>
+      <label>Present quote in
+        <select id="quote-currency-select">
+          <option value="original">Original quotation currency</option>
+          <option value="USD">USD</option>
+        </select>
+      </label>
+    </div>
+
+    <div id="committed-fees" class="committed-fees"></div>
+
+    <label class="finalize-textarea">Payment terms
+      <textarea id="payment-terms-input" rows="3"></textarea>
+    </label>
+    <label class="finalize-textarea">Disclaimer / T&amp;Cs
+      <textarea id="disclaimer-input" rows="4"></textarea>
+    </label>
+    <p class="hint">Payment terms and disclaimer are placeholder boilerplate &mdash; edit freely per quote. Ask Slasify legal/ops for the real standing language to replace these defaults.</p>
+
+    <button type="button" id="generate-pdf-btn" class="btn-primary">Generate client PDF</button>
   </section>
 
 </main>
@@ -78,6 +119,8 @@
 <footer class="app-footer">
   <p>FX rates via <a href="https://frankfurter.dev" target="_blank" rel="noopener">Frankfurter</a> (ECB reference rates, updated daily). Data source: Slasify MPD.</p>
 </footer>
+
+<div id="print-quote"></div>
 
 <script src="js/markup.js"></script>
 <script src="js/fx.js"></script>
