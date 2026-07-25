@@ -289,15 +289,24 @@ function renderFiguresIfPossible(result) {
 
   if (low === null) return `<p class="hint">No FX rate available — cannot convert.</p>`;
 
-  const isRange = Math.abs(high - low) > 0.01;
   const origCur = state.vendorRow.fees[state.activeFee].currency || currency;
-  const origLow = fromUSD(low, origCur, fxTable);
-  const origHigh = fromUSD(high, origCur, fxTable);
+  const origLowRaw = fromUSD(low, origCur, fxTable);
+  const origHighRaw = fromUSD(high, origCur, fxTable);
+
+  // Round each currency's own figure up to the nearest 5 independently (a clean
+  // number to quote in that currency), rather than deriving one from the other's rounding.
+  low = roundUpTo5(low);
+  high = roundUpTo5(high);
+  const origLow = roundUpTo5(origLowRaw);
+  const origHigh = roundUpTo5(origHighRaw);
+
+  const isRange = Math.abs(high - low) > 0.01;
+  const origIsRange = origLow !== null && Math.abs(origHigh - origLow) > 0.01;
 
   let html = `<div class="result-figures">
     <div class="result-figure"><div class="label">USD</div><div class="value">$${fmtMoney(low)}${isRange ? '–$' + fmtMoney(high) : ''}</div></div>`;
   if (origCur !== 'USD' && origLow !== null) {
-    html += `<div class="result-figure"><div class="label">${origCur} (original currency)</div><div class="value">${origCur} ${fmtMoney(origLow)}${isRange ? '–' + fmtMoney(origHigh) : ''}</div></div>`;
+    html += `<div class="result-figure"><div class="label">${origCur} (original currency)</div><div class="value">${origCur} ${fmtMoney(origLow)}${origIsRange ? '–' + fmtMoney(origHigh) : ''}</div></div>`;
   }
   html += `</div>`;
   html += fxFootnote(origCur);

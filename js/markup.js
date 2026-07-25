@@ -15,6 +15,12 @@ function fmtMoney(n) {
   return n.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 }
 
+// Quotes are rounded up to the nearest 5 (e.g. 452 -> 455) so BD always quotes a clean number.
+function roundUpTo5(n) {
+  if (n === null || n === undefined || isNaN(n)) return n;
+  return Math.ceil(n / 5) * 5;
+}
+
 function computeServiceFee(fee, serviceType) {
   const [mLow, mHigh] = SERVICE_MARGIN[serviceType];
   switch (fee.kind) {
