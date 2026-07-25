@@ -42,18 +42,22 @@ function computeServiceFee(fee, serviceType) {
         vendorAmount: { currency: fee.currency, low: fee.low, high: fee.high },
         marginLow: mLow, marginHigh: mHigh,
       };
-    case 'percent':
+    case 'percent': {
+      const basis = fee.basis || 'Gross Salary';
       return {
-        formula: `${fee.pct}% of Gross Salary + USD ${mLow}-${mHigh}`,
+        formula: `${fee.pct}% of ${basis} + USD ${mLow}-${mHigh}`,
         requiresInput: ['grossSalary'],
         pct: fee.pct, marginLow: mLow, marginHigh: mHigh,
       };
-    case 'percent_min':
+    }
+    case 'percent_min': {
+      const basis = fee.basis || 'Gross Salary';
       return {
-        formula: `${fee.pct}% of Gross Salary (min ${fee.min_currency} ${fmtMoney(fee.min_amount)}) + USD ${mLow}-${mHigh}`,
+        formula: `${fee.pct}% of ${basis} (min ${fee.min_currency} ${fmtMoney(fee.min_amount)}) + USD ${mLow}-${mHigh}`,
         requiresInput: ['grossSalary'],
         pct: fee.pct, minCurrency: fee.min_currency, minAmount: fee.min_amount, marginLow: mLow, marginHigh: mHigh,
       };
+    }
     case 'unknown':
       return { formula: 'Vendor fee not yet confirmed (TBC) — cannot calculate.', requiresInput: [], uncalculable: true };
     case 'llm':
@@ -102,7 +106,7 @@ function computeDeposit(fee) {
     case 'flat':
       return { formula: `${fee.currency} ${fmtMoney(fee.amount)}`, requiresInput: [], vendorAmount: { currency: fee.currency, amount: fee.amount } };
     case 'percent':
-      return { formula: `${fee.pct}% (of gross salary/TEC, per vendor terms)`, requiresInput: ['grossSalary'], pct: fee.pct };
+      return { formula: `${fee.pct}% of ${fee.basis || 'Gross Salary/TEC (per vendor terms)'}`, requiresInput: ['grossSalary'], pct: fee.pct };
     case 'unknown':
       return { formula: 'Vendor deposit terms not yet confirmed (TBC).', requiresInput: [], uncalculable: true };
     case 'llm':

@@ -1,16 +1,16 @@
 [
  {
-  "raw": "• USD 1.000 (Standard - within 10 working days)\n• USD 1,500 (Express - within 3 Working days",
+  "raw": "\u2022 USD 1.000 (Standard - within 10 working days)\n\u2022 USD 1,500 (Express - within 3 Working days",
   "feeKey": "setupFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "• USD 1.150 (Standard - within 10 working days)\n• USD 1,650 (Express - within 3 Working days",
+  "slasifyFormula": "\u2022 USD 1.150 (Standard - within 10 working days)\n\u2022 USD 1,650 (Express - within 3 Working days",
   "requiresInput": []
  },
  {
   "raw": "EUR 500 or 10%",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "EUR 650–750 or (10% + USD 150–250)",
+  "slasifyFormula": "EUR 650\u2013750 or (10% of Gross Salary/TEC + USD 150\u2013250)",
   "requiresInput": [
    "grossSalary"
   ]
@@ -23,10 +23,10 @@
   "requiresInput": []
  },
  {
-  "raw": "• 1 pax: USD 450/pax\n• 2-5 pax: USD 400/pax\n• 6 or more: USD 350/pax",
+  "raw": "\u2022 1 pax: USD 450/pax\n\u2022 2-5 pax: USD 400/pax\n\u2022 6 or more: USD 350/pax",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "• 1 pax: USD 600–700/pax\n• 2-5 pax: USD 550–650/pax\n• 6 or more: USD 500–600/pax",
+  "slasifyFormula": "\u2022 1 pax: USD 600\u2013700/pax\n\u2022 2-5 pax: USD 550\u2013650/pax\n\u2022 6 or more: USD 500\u2013600/pax",
   "requiresInput": [
    "headcount"
   ]
@@ -35,7 +35,7 @@
   "raw": "7% on TEC",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "7% of TEC + USD 150–250",
+  "slasifyFormula": "7% of TEC + USD 150\u2013250",
   "requiresInput": [
    "grossSalary"
   ]
@@ -44,34 +44,34 @@
   "raw": "10% on TEC",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "10% of TEC + USD 250–350",
+  "slasifyFormula": "10% of TEC + USD 250\u2013350",
   "requiresInput": [
    "grossSalary"
   ]
  },
  {
-  "raw": "• USD199 (1 to 5) \n• USD 179 (6 to 10) \n• USD 159 (11+)",
+  "raw": "\u2022 USD199 (1 to 5) \n\u2022 USD 179 (6 to 10) \n\u2022 USD 159 (11+)",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "• USD 349–449 (1 to 5) \n• USD 329–429 (6 to 10) \n• USD 309–409 (11+)",
+  "slasifyFormula": "\u2022 USD 349\u2013449 (1 to 5) \n\u2022 USD 329\u2013429 (6 to 10) \n\u2022 USD 309\u2013409 (11+)",
   "requiresInput": [
    "headcount"
   ]
  },
  {
-  "raw": "• EUR 400\n• 6% on bonus and reimbursement",
+  "raw": "\u2022 EUR 400\n\u2022 6% on bonus and reimbursement",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "• EUR 550–650\n• 6% on bonus and reimbursement",
+  "slasifyFormula": "\u2022 EUR 550\u2013650\n\u2022 6% on bonus and reimbursement",
   "requiresInput": [
    "grossSalary"
   ]
  },
  {
-  "raw": "• EUR 400\n• 6% on bonus and reimbursement",
+  "raw": "\u2022 EUR 400\n\u2022 6% on bonus and reimbursement",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "• EUR 650–750\n• 6% on bonus and reimbursement",
+  "slasifyFormula": "\u2022 EUR 650\u2013750\n\u2022 6% on bonus and reimbursement",
   "requiresInput": [
    "grossSalary"
   ]
@@ -80,7 +80,7 @@
   "raw": "USD 1,000 (discounted by USD 250)",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "USD 1,150–1,250 (discounted by USD 250)",
+  "slasifyFormula": "USD 1,150\u20131,250 (discounted by USD 250)",
   "requiresInput": []
  },
  {
@@ -98,10 +98,10 @@
   "requiresInput": []
  },
  {
-  "raw": "• Termination will have an FGTS fine, around one month's salary",
+  "raw": "\u2022 Termination will have an FGTS fine, around one month's salary",
   "feeKey": "terminationFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "• Termination will have an FGTS fine, around one month's salary",
+  "slasifyFormula": "\u2022 Termination will have an FGTS fine, around one month's salary",
   "requiresInput": [
    "grossSalary"
   ]
@@ -121,10 +121,10 @@
   "requiresInput": []
  },
  {
-  "raw": "• EUR 375\n• 6% on bonus and reimbursement",
+  "raw": "\u2022 EUR 375\n\u2022 6% on bonus and reimbursement",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "• EUR 525–625\n• 6% on bonus and reimbursement",
+  "slasifyFormula": "\u2022 EUR 525\u2013625\n\u2022 6% on bonus and reimbursement",
   "requiresInput": [
    "grossSalary"
   ]
@@ -165,14 +165,14 @@
   "raw": "USD 600 (originally USD 750)",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "USD 850–950 (originally USD 750)",
+  "slasifyFormula": "USD 850\u2013950 (originally USD 750)",
   "requiresInput": []
  },
  {
-  "raw": "• USD 199 (1 to 5) \n• USD 179 (6 to 10) \n• USD 159 (11+)",
+  "raw": "\u2022 USD 199 (1 to 5) \n\u2022 USD 179 (6 to 10) \n\u2022 USD 159 (11+)",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "• USD 349–449 (1 to 5) \n• USD 329–429 (6 to 10) \n• USD 309–409 (11+)",
+  "slasifyFormula": "\u2022 USD 349\u2013449 (1 to 5) \n\u2022 USD 329\u2013429 (6 to 10) \n\u2022 USD 309\u2013409 (11+)",
   "requiresInput": [
    "headcount"
   ]
@@ -220,44 +220,44 @@
   "requiresInput": []
  },
  {
-  "raw": "• EUR 550\n• 6% on bonus and reimbursement",
+  "raw": "\u2022 EUR 550\n\u2022 6% on bonus and reimbursement",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "• EUR 700–800\n• 6% on bonus and reimbursement",
+  "slasifyFormula": "\u2022 EUR 700\u2013800\n\u2022 6% on bonus and reimbursement",
   "requiresInput": [
    "grossSalary"
   ]
  },
  {
-  "raw": "• EUR 550\n• 6% on bonus and reimbursement",
+  "raw": "\u2022 EUR 550\n\u2022 6% on bonus and reimbursement",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "• EUR 800–900\n• 6% on bonus and reimbursement",
+  "slasifyFormula": "\u2022 EUR 800\u2013900\n\u2022 6% on bonus and reimbursement",
   "requiresInput": [
    "grossSalary"
   ]
  },
  {
-  "raw": "Freelancers – 300 USD (one-time payment)\nEmployee – 400 USD (one-time payment)",
+  "raw": "Freelancers \u2013 300 USD (one-time payment)\nEmployee \u2013 400 USD (one-time payment)",
   "feeKey": "setupFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "Freelancers – 450 USD (one-time payment)\nEmployee – 550 USD (one-time payment)",
+  "slasifyFormula": "Freelancers \u2013 450 USD (one-time payment)\nEmployee \u2013 550 USD (one-time payment)",
   "requiresInput": []
  },
  {
-  "raw": "• EUR 375\n• 6% on bonus and reimbursement",
+  "raw": "\u2022 EUR 375\n\u2022 6% on bonus and reimbursement",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "• EUR 625–725\n• 6% on bonus and reimbursement",
+  "slasifyFormula": "\u2022 EUR 625\u2013725\n\u2022 6% on bonus and reimbursement",
   "requiresInput": [
    "grossSalary"
   ]
  },
  {
-  "raw": "• EU foreigner - EUR 100 / CZK 3,000\n• Non-EU foreigner - EUR 1,200 / CZK 35,000 + government fees and translations",
+  "raw": "\u2022 EU foreigner - EUR 100 / CZK 3,000\n\u2022 Non-EU foreigner - EUR 1,200 / CZK 35,000 + government fees and translations",
   "feeKey": "setupFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "• EU foreigner - EUR 250 / CZK 3,150\n• Non-EU foreigner - EUR 1,350 / CZK 35,150 + government fees and translations",
+  "slasifyFormula": "\u2022 EU foreigner - EUR 250 / CZK 3,150\n\u2022 Non-EU foreigner - EUR 1,350 / CZK 35,150 + government fees and translations",
   "requiresInput": []
  },
  {
@@ -280,7 +280,7 @@
   "raw": "10% on gross salary",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "10% of gross salary + USD 150–250",
+  "slasifyFormula": "10% of gross salary + USD 150\u2013250",
   "requiresInput": [
    "grossSalary"
   ]
@@ -305,7 +305,7 @@
   "raw": "EUR 190 - < EUR 3.5k\nEUR 290 - EUR 3.5k - 6k\nEUR 380 - > EUR 6k",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "EUR 340–440 - < EUR 3.5k\nEUR 440–540 - EUR 3.5k - 6k\nEUR 530–630 - > EUR 6k",
+  "slasifyFormula": "EUR 340\u2013440 - < EUR 3.5k\nEUR 440\u2013540 - EUR 3.5k - 6k\nEUR 530\u2013630 - > EUR 6k",
   "requiresInput": [
    "grossSalary"
   ]
@@ -321,7 +321,7 @@
   "raw": "EUR 600 (no sponsorship available)",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "EUR 750–850 (no sponsorship available)",
+  "slasifyFormula": "EUR 750\u2013850 (no sponsorship available)",
   "requiresInput": []
  },
  {
@@ -332,10 +332,10 @@
   "requiresInput": []
  },
  {
-  "raw": "• EUR 199 (1 to 5) \n• EUR 179 (6 to 10) \n• EUR 159 (11+)",
+  "raw": "\u2022 EUR 199 (1 to 5) \n\u2022 EUR 179 (6 to 10) \n\u2022 EUR 159 (11+)",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "• EUR 349–449 (1 to 5) \n• EUR 329–429 (6 to 10) \n• EUR 309–409 (11+)",
+  "slasifyFormula": "\u2022 EUR 349\u2013449 (1 to 5) \n\u2022 EUR 329\u2013429 (6 to 10) \n\u2022 EUR 309\u2013409 (11+)",
   "requiresInput": [
    "headcount"
   ]
@@ -348,33 +348,33 @@
   "requiresInput": []
  },
  {
-  "raw": "USD 430 + 2% for currency exchange rate on invoice\n• 5% reimbursement of costs",
+  "raw": "USD 430 + 2% for currency exchange rate on invoice\n\u2022 5% reimbursement of costs",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "USD 580–680 + 2% for currency exchange rate on invoice\n• 5% reimbursement of costs",
+  "slasifyFormula": "USD 580\u2013680 + 2% for currency exchange rate on invoice\n\u2022 5% reimbursement of costs",
   "requiresInput": []
  },
  {
-  "raw": "USD 450 + 2% for currency exchange rate on invoice\n• 5% reimbursement of costs",
+  "raw": "USD 450 + 2% for currency exchange rate on invoice\n\u2022 5% reimbursement of costs",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "USD 700–800 + 2% for currency exchange rate on invoice\n• 5% reimbursement of costs",
+  "slasifyFormula": "USD 700\u2013800 + 2% for currency exchange rate on invoice\n\u2022 5% reimbursement of costs",
   "requiresInput": []
  },
  {
   "raw": "EUR 600 (up to a salary of EUR 120,000)",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "EUR 750–850 (up to a salary of EUR 120,000)",
+  "slasifyFormula": "EUR 750\u2013850 (up to a salary of EUR 120,000)",
   "requiresInput": [
    "grossSalary"
   ]
  },
  {
-  "raw": "• EUR 299",
+  "raw": "\u2022 EUR 299",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "• EUR 449–549",
+  "slasifyFormula": "\u2022 EUR 449\u2013549",
   "requiresInput": []
  },
  {
@@ -401,24 +401,24 @@
   "requiresInput": []
  },
  {
-  "raw": "• USD 100 (no insurance)\n• USD 150 (with insurance )",
+  "raw": "\u2022 USD 100 (no insurance)\n\u2022 USD 150 (with insurance )",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "• USD 250–350 (no insurance)\n• USD 300–400 (with insurance )",
+  "slasifyFormula": "\u2022 USD 250\u2013350 (no insurance)\n\u2022 USD 300\u2013400 (with insurance )",
   "requiresInput": []
  },
  {
-  "raw": "• USD 200 (no insurance)\n• USD 220 (with insurance Includes INR 7,00,000 of Health Insurance for\n   Employee only)",
+  "raw": "\u2022 USD 200 (no insurance)\n\u2022 USD 220 (with insurance Includes INR 7,00,000 of Health Insurance for\n   Employee only)",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "• USD 450–550 (no insurance)\n• USD 470–570 (with insurance Includes INR 7,00,000 of Health Insurance for\n   Employee only)",
+  "slasifyFormula": "\u2022 USD 450\u2013550 (no insurance)\n\u2022 USD 470\u2013570 (with insurance Includes INR 7,00,000 of Health Insurance for\n   Employee only)",
   "requiresInput": []
  },
  {
-  "raw": "• USD 99 (1 to 5) \n• USD 89 (6 to 10) \n• USD 79 (11+)",
+  "raw": "\u2022 USD 99 (1 to 5) \n\u2022 USD 89 (6 to 10) \n\u2022 USD 79 (11+)",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "• USD 249–349 (1 to 5) \n• USD 239–339 (6 to 10) \n• USD 229–329 (11+)",
+  "slasifyFormula": "\u2022 USD 249\u2013349 (1 to 5) \n\u2022 USD 239\u2013339 (6 to 10) \n\u2022 USD 229\u2013329 (11+)",
   "requiresInput": [
    "headcount"
   ]
@@ -442,24 +442,24 @@
   ]
  },
  {
-  "raw": "Involuntary termination:\n• Preparation of agreement: USD 400\n• Registration at manpower authorities: USD 250",
+  "raw": "Involuntary termination:\n\u2022 Preparation of agreement: USD 400\n\u2022 Registration at manpower authorities: USD 250",
   "feeKey": "terminationFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "Involuntary termination:\n• Preparation of agreement: USD 550\n• Registration at manpower authorities: USD 400",
+  "slasifyFormula": "Involuntary termination:\n\u2022 Preparation of agreement: USD 550\n\u2022 Registration at manpower authorities: USD 400",
   "requiresInput": []
  },
  {
-  "raw": "Involuntary termination:\n• Preparation of agreement: USD 400\n• Registration at manpower authorities: USD 250",
+  "raw": "Involuntary termination:\n\u2022 Preparation of agreement: USD 400\n\u2022 Registration at manpower authorities: USD 250",
   "feeKey": "terminationFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "Involuntary termination:\n• Preparation of agreement: USD 650\n• Registration at manpower authorities: USD 500",
+  "slasifyFormula": "Involuntary termination:\n\u2022 Preparation of agreement: USD 650\n\u2022 Registration at manpower authorities: USD 500",
   "requiresInput": []
  },
  {
   "raw": "14% on TEC + bonus or USD1300 (whichever is higher)",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "(14% on TEC + bonus + USD 150–250) or USD 1,450–1,550 (whichever is higher)",
+  "slasifyFormula": "(14% on TEC + bonus + USD 150\u2013250) or USD 1,450\u20131,550 (whichever is higher)",
   "requiresInput": [
    "grossSalary"
   ]
@@ -475,7 +475,7 @@
   "raw": "11-15%",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "11-15% + USD 150–250",
+  "slasifyFormula": "11-15% of Gross Salary/TEC + USD 150\u2013250",
   "requiresInput": [
    "grossSalary"
   ]
@@ -484,7 +484,7 @@
   "raw": "$599 Flat Rate or  9.5% of Employment Costs. Volume and partners pricing available.",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "$749–849 Flat Rate or 9.5% of Employment Costs + USD 150–250. Volume and partners pricing available.",
+  "slasifyFormula": "$749\u2013849 Flat Rate or 9.5% of Employment Costs + USD 150\u2013250. Volume and partners pricing available.",
   "requiresInput": [
    "grossSalary"
   ]
@@ -493,7 +493,7 @@
   "raw": "9.5% of Employment Costs. Volume and partners pricing available.",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "9.5% of Employment Costs + USD 250–350. Volume and partners pricing available.",
+  "slasifyFormula": "9.5% of Employment Costs + USD 250\u2013350. Volume and partners pricing available.",
   "requiresInput": [
    "grossSalary"
   ]
@@ -502,7 +502,7 @@
   "raw": "EUR 550, negotiable depending on headcount",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "EUR 700–800, negotiable depending on headcount",
+  "slasifyFormula": "EUR 700\u2013800, negotiable depending on headcount",
   "requiresInput": [
    "headcount"
   ]
@@ -520,7 +520,7 @@
   "raw": "EUR 550, negotiable depending on headcount",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "EUR 800–900, negotiable depending on headcount",
+  "slasifyFormula": "EUR 800\u2013900, negotiable depending on headcount",
   "requiresInput": [
    "headcount"
   ]
@@ -538,7 +538,7 @@
   "raw": "10% of TEC. Min contract: 3 month. Reimbursement fee: 2.5%",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "10% of TEC + USD 150–250. Min contract: 3 month. Reimbursement fee: 2.5%",
+  "slasifyFormula": "10% of TEC + USD 150\u2013250. Min contract: 3 month. Reimbursement fee: 2.5%",
   "requiresInput": [
    "grossSalary"
   ]
@@ -554,16 +554,16 @@
   "raw": "a.) JPY80,000 or b.) 8% on TEC (higher)",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "a.) JPY80,150–80,250 or b.) 8% on TEC + USD 150–250 (higher)",
+  "slasifyFormula": "a.) JPY80,150\u201380,250 or b.) 8% on TEC + USD 150\u2013250 (higher)",
   "requiresInput": [
    "grossSalary"
   ]
  },
  {
-  "raw": "• USD 525 - salary up tp USD 5,000 / pax\n• USD 729 - salary up to USD 8,000 / pax\n• USD 1,300 - salary higher than USD 8,000 / pax",
+  "raw": "\u2022 USD 525 - salary up tp USD 5,000 / pax\n\u2022 USD 729 - salary up to USD 8,000 / pax\n\u2022 USD 1,300 - salary higher than USD 8,000 / pax",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "• USD 675–775 - salary up tp USD 5,000 / pax\n• USD 879–979 - salary up to USD 8,000 / pax\n• USD 1,450–1,550 - salary higher than USD 8,000 / pax",
+  "slasifyFormula": "\u2022 USD 675\u2013775 - salary up tp USD 5,000 / pax\n\u2022 USD 879\u2013979 - salary up to USD 8,000 / pax\n\u2022 USD 1,450\u20131,550 - salary higher than USD 8,000 / pax",
   "requiresInput": [
    "grossSalary"
   ]
@@ -572,16 +572,16 @@
   "raw": "12% on TEC",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "12% of TEC + USD 150–250",
+  "slasifyFormula": "12% of TEC + USD 150\u2013250",
   "requiresInput": [
    "grossSalary"
   ]
  },
  {
-  "raw": "1–5                      $250 \n6–10                    $200 \n11–25                  $175 \n26–50                  $150 \n51–100                $100 \n101–250              $90 \n251–500              $80 \n500–1000            $75 \n1000+                  $50",
+  "raw": "1\u20135                      $250 \n6\u201310                    $200 \n11\u201325                  $175 \n26\u201350                  $150 \n51\u2013100                $100 \n101\u2013250              $90 \n251\u2013500              $80 \n500\u20131000            $75 \n1000+                  $50",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "1–5                      $400–500 \n6–10                    $350–450 \n11–25                  $325–425 \n26–50                  $300–400 \n51–100                $250–350 \n101–250              $240–340 \n251–500              $230–330 \n500–1000            $225–325 \n1000+                  $200–300",
+  "slasifyFormula": "1\u20135                      $400\u2013500 \n6\u201310                    $350\u2013450 \n11\u201325                  $325\u2013425 \n26\u201350                  $300\u2013400 \n51\u2013100                $250\u2013350 \n101\u2013250              $240\u2013340 \n251\u2013500              $230\u2013330 \n500\u20131000            $225\u2013325 \n1000+                  $200\u2013300",
   "requiresInput": [
    "headcount"
   ]
@@ -594,10 +594,10 @@
   "requiresInput": []
  },
  {
-  "raw": "Option 1 (Flat Fee) 10% on Reimbursements&Tax\n(1–10 EEs),$300 flat/month,\n(11–15 EEs),$250 flat/month,\n(16–25 EEs),$200 flat/month,\nOption 2 (Percentage Based) No additional fees\n(1–10 EEs) 10% (Min $300 / Max $400)\n(11–15 EEs) 9% (Min $250 / Max $350)\n(16–25 EEs) 8% (Min $200 / Max $300)",
+  "raw": "Option 1 (Flat Fee) 10% on Reimbursements&Tax\n(1\u201310 EEs),$300 flat/month,\n(11\u201315 EEs),$250 flat/month,\n(16\u201325 EEs),$200 flat/month,\nOption 2 (Percentage Based) No additional fees\n(1\u201310 EEs) 10% (Min $300 / Max $400)\n(11\u201315 EEs) 9% (Min $250 / Max $350)\n(16\u201325 EEs) 8% (Min $200 / Max $300)",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "Option 1 (Flat Fee) 10% on Reimbursements&Tax\n(1–10 EEs),$450–550 flat/month,\n(11–15 EEs),$400–500 flat/month,\n(16–25 EEs),$350–450 flat/month,\nOption 2 (Percentage Based) No additional fees\n(1–10 EEs) 10% + USD 150–250 (Min $300 / Max $400)\n(11–15 EEs) 9% + USD 150–250 (Min $250 / Max $350)\n(16–25 EEs) 8% + USD 150–250 (Min $200 / Max $300)",
+  "slasifyFormula": "Option 1 (Flat Fee) 10% on Reimbursements&Tax\n(1\u201310 EEs),$450\u2013550 flat/month,\n(11\u201315 EEs),$400\u2013500 flat/month,\n(16\u201325 EEs),$350\u2013450 flat/month,\nOption 2 (Percentage Based) No additional fees\n(1\u201310 EEs) 10% + USD 150\u2013250 (Min $300 / Max $400)\n(11\u201315 EEs) 9% + USD 150\u2013250 (Min $250 / Max $350)\n(16\u201325 EEs) 8% + USD 150\u2013250 (Min $200 / Max $300)",
   "requiresInput": [
    "grossSalary",
    "headcount"
@@ -607,14 +607,14 @@
   "raw": "USD 450 + 2% on invoice + Reimbursement Fee: 5% on costs",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "USD 600–700 + 2% on invoice + Reimbursement Fee: 5% on costs",
+  "slasifyFormula": "USD 600\u2013700 + 2% on invoice + Reimbursement Fee: 5% on costs",
   "requiresInput": []
  },
  {
   "raw": "USD 450 + 2% on invoice + Reimbursement Fee: 5% on costs",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "USD 700–800 + 2% on invoice + Reimbursement Fee: 5% on costs",
+  "slasifyFormula": "USD 700\u2013800 + 2% on invoice + Reimbursement Fee: 5% on costs",
   "requiresInput": []
  },
  {
@@ -625,10 +625,10 @@
   "requiresInput": []
  },
  {
-  "raw": "• 18% on gross salary min RM 1500, max RM 4,000\n• 5% on reimbursement\n\nOR\n\nRM 1,500 per pax for 1 - 10 headcount and \nRM 1,200 for the 11th headcount onwards",
+  "raw": "\u2022 18% on gross salary min RM 1500, max RM 4,000\n\u2022 5% on reimbursement\n\nOR\n\nRM 1,500 per pax for 1 - 10 headcount and \nRM 1,200 for the 11th headcount onwards",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "• 18% on gross salary + USD 250–350 min RM 1500, max RM 4,000\n• 5% on reimbursement\n\nOR\n\nRM 1,750–1,850 per pax for 1 - 10 headcount and \nRM 1,450–1,550 for the 11th headcount onwards",
+  "slasifyFormula": "\u2022 18% on gross salary + USD 250\u2013350 min RM 1500, max RM 4,000\n\u2022 5% on reimbursement\n\nOR\n\nRM 1,750\u20131,850 per pax for 1 - 10 headcount and \nRM 1,450\u20131,550 for the 11th headcount onwards",
   "requiresInput": [
    "grossSalary",
    "headcount"
@@ -645,7 +645,7 @@
   "raw": "below MYR 12,500 - MYR 1,000\nabove MYR 12,500 - 8% capped at MYR 1,800\noff-cycle payment request - MYR 350 / transaction",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "below MYR 12,500 - MYR 1,250–1,350\nabove MYR 12,500 - 8% + USD 250–350 capped at MYR 1,800\noff-cycle payment request - MYR 350–360 / transaction",
+  "slasifyFormula": "below MYR 12,500 - MYR 1,250\u20131,350\nabove MYR 12,500 - 8% of Gross Salary + USD 250\u2013350 capped at MYR 1,800\noff-cycle payment request - MYR 350\u2013360 / transaction",
   "requiresInput": [
    "grossSalary"
   ]
@@ -661,7 +661,7 @@
   "raw": "USD 350 or 12%",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "USD 500–600 or 12% + USD 150–250",
+  "slasifyFormula": "USD 500\u2013600 or 12% of Gross Salary/TEC + USD 150\u2013250",
   "requiresInput": [
    "grossSalary"
   ]
@@ -670,16 +670,16 @@
   "raw": "13% of total payable",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "13% of total payable + USD 250–350",
+  "slasifyFormula": "13% of total payable + USD 250\u2013350",
   "requiresInput": [
    "grossSalary"
   ]
  },
  {
-  "raw": "• less than 15 EEs: EUR 300 / person\n• more than 15 EEs: EUR 250 / person\n• Monthly foreign exchange and transfer fees (3%) and discretionary benefits fees (8%)",
+  "raw": "\u2022 less than 15 EEs: EUR 300 / person\n\u2022 more than 15 EEs: EUR 250 / person\n\u2022 Monthly foreign exchange and transfer fees (3%) and discretionary benefits fees (8%)",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "• less than 15 EEs: EUR 450–550 / person\n• more than 15 EEs: EUR 400–500 / person\n• Monthly foreign exchange and transfer fees (3%) and discretionary benefits fees (8%)",
+  "slasifyFormula": "\u2022 less than 15 EEs: EUR 450\u2013550 / person\n\u2022 more than 15 EEs: EUR 400\u2013500 / person\n\u2022 Monthly foreign exchange and transfer fees (3%) and discretionary benefits fees (8%)",
   "requiresInput": [
    "headcount"
   ]
@@ -697,7 +697,7 @@
   "raw": "70 EUR but not less than 4%",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "EUR 220–320 but not less than 4% + USD 150–250",
+  "slasifyFormula": "EUR 220\u2013320 but not less than 4% of Gross Salary/TEC + USD 150\u2013250",
   "requiresInput": [
    "grossSalary"
   ]
@@ -715,7 +715,7 @@
   "raw": "EUR 220 (could be negotiated with higher headcount)",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "EUR 370–470 (could be negotiated with higher headcount)",
+  "slasifyFormula": "EUR 370\u2013470 (could be negotiated with higher headcount)",
   "requiresInput": [
    "headcount"
   ]
@@ -724,7 +724,7 @@
   "raw": "10% on total employment cost",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "10% of total employment cost + USD 150–250",
+  "slasifyFormula": "10% of total employment cost + USD 150\u2013250",
   "requiresInput": [
    "grossSalary"
   ]
@@ -733,7 +733,7 @@
   "raw": "15% on total employment cost",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "15% of total employment cost + USD 250–350",
+  "slasifyFormula": "15% of total employment cost + USD 250\u2013350",
   "requiresInput": [
    "grossSalary"
   ]
@@ -742,14 +742,14 @@
   "raw": "EUR 600 (sponsorship available)",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "EUR 750–850 (sponsorship available)",
+  "slasifyFormula": "EUR 750\u2013850 (sponsorship available)",
   "requiresInput": []
  },
  {
   "raw": "15% of the TEC, capped at NZ$1,650 per month (around 1120 USD)",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "15% of the TEC + USD 150–250, capped at NZ$1,650 per month (around 1120 USD)",
+  "slasifyFormula": "15% of the TEC + USD 150\u2013250, capped at NZ$1,650 per month (around 1120 USD)",
   "requiresInput": [
    "grossSalary"
   ]
@@ -758,7 +758,7 @@
   "raw": "NOK 6,000",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "NOK 6,150–6,250",
+  "slasifyFormula": "NOK 6,150\u20136,250",
   "requiresInput": []
  },
  {
@@ -772,7 +772,7 @@
   "raw": "OMR 350 *pricing for employees on salaries greater than 4,000 OMR to be provided on a project by project basis",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "OMR 500–600 *pricing for employees on salaries greater than 4,000 OMR to be provided on a project by project basis",
+  "slasifyFormula": "OMR 500\u2013600 *pricing for employees on salaries greater than 4,000 OMR to be provided on a project by project basis",
   "requiresInput": [
    "grossSalary"
   ]
@@ -788,7 +788,7 @@
   "raw": "OMR 350 *pricing for employees on salaries greater than 4,000 OMR to be provided on a project by project basis",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "OMR 600–700 *pricing for employees on salaries greater than 4,000 OMR to be provided on a project by project basis",
+  "slasifyFormula": "OMR 600\u2013700 *pricing for employees on salaries greater than 4,000 OMR to be provided on a project by project basis",
   "requiresInput": [
    "grossSalary"
   ]
@@ -804,7 +804,7 @@
   "raw": "USD 150 + 3% on bonus and allowance",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "USD 300–400 + 3% on bonus and allowance",
+  "slasifyFormula": "USD 300\u2013400 + 3% on bonus and allowance",
   "requiresInput": [
    "grossSalary"
   ]
@@ -813,7 +813,7 @@
   "raw": "USD 350 + 3% on bonus and allowance",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "USD 600–700 + 3% on bonus and allowance",
+  "slasifyFormula": "USD 600\u2013700 + 3% on bonus and allowance",
   "requiresInput": [
    "grossSalary"
   ]
@@ -822,7 +822,7 @@
   "raw": "1-5 pax - $500 per pax\n6-10 pax - $450 per pax\n11+ pax - $400 per pax",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "1-5 pax - $650–750 per pax\n6-10 pax - $600–700 per pax\n11+ pax - $550–650 per pax",
+  "slasifyFormula": "1-5 pax - $650\u2013750 per pax\n6-10 pax - $600\u2013700 per pax\n11+ pax - $550\u2013650 per pax",
   "requiresInput": [
    "headcount"
   ]
@@ -840,7 +840,7 @@
   "raw": "- Salary less than PHP 50,000/month - USD 300 Fixed/EE\n- Salary higher than PHP 50,000/month - 15% of gross monthly salary + 2% Business Permit Recovery Fee on employer cost",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "- Salary less than PHP 50,000/month - USD 550–650 Fixed/EE\n- Salary higher than PHP 50,000/month - 15% of gross monthly salary + USD 250–350 + 2% Business Permit Recovery Fee on employer cost",
+  "slasifyFormula": "- Salary less than PHP 50,000/month - USD 550\u2013650 Fixed/EE\n- Salary higher than PHP 50,000/month - 15% of gross monthly salary + USD 250\u2013350 + 2% Business Permit Recovery Fee on employer cost",
   "requiresInput": [
    "grossSalary"
   ]
@@ -849,7 +849,7 @@
   "raw": "18% on TEC",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "18% of TEC + USD 150–250",
+  "slasifyFormula": "18% of TEC + USD 150\u2013250",
   "requiresInput": [
    "grossSalary"
   ]
@@ -858,7 +858,7 @@
   "raw": "USD 210 (30 pax -below)\nUSD 199 (31-60 pax)\nUSD 175 (61-100 pax)\nUSD 150 (over 100 pax)",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "USD 360–460 (30 pax -below)\nUSD 349–449 (31-60 pax)\nUSD 325–425 (61-100 pax)\nUSD 300–400 (over 100 pax)",
+  "slasifyFormula": "USD 360\u2013460 (30 pax -below)\nUSD 349\u2013449 (31-60 pax)\nUSD 325\u2013425 (61-100 pax)\nUSD 300\u2013400 (over 100 pax)",
   "requiresInput": [
    "headcount"
   ]
@@ -874,14 +874,14 @@
   "raw": "EUR 35 per week (roughly EUR 140 per month)",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "EUR 185–285 per week (roughly EUR 290–390 per month)",
+  "slasifyFormula": "EUR 185\u2013285 per week (roughly EUR 290\u2013390 per month)",
   "requiresInput": []
  },
  {
   "raw": "QR 2,500",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "QR 2,650–2,750",
+  "slasifyFormula": "QR 2,650\u20132,750",
   "requiresInput": []
  },
  {
@@ -902,7 +902,7 @@
   "raw": "EUR 300 (could be negotiated with higher headcount)",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "EUR 450–550 (could be negotiated with higher headcount)",
+  "slasifyFormula": "EUR 450\u2013550 (could be negotiated with higher headcount)",
   "requiresInput": [
    "headcount"
   ]
@@ -920,7 +920,7 @@
   "raw": "14%, Minimum charge USD 400",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "14% + USD 250–350, Minimum charge USD 400",
+  "slasifyFormula": "14% of Gross Salary/TEC + USD 250\u2013350, Minimum charge USD 400",
   "requiresInput": [
    "grossSalary"
   ]
@@ -929,32 +929,32 @@
   "raw": "USD 430 + 2% on invoice + Reimbursement Fee: 5% on costs",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "USD 580–680 + 2% on invoice + Reimbursement Fee: 5% on costs",
+  "slasifyFormula": "USD 580\u2013680 + 2% on invoice + Reimbursement Fee: 5% on costs",
   "requiresInput": []
  },
  {
-  "raw": "EOR fee:\n• SAR 2,250 (USD 600) - for salary ranging from SAR 1,000 - 20,000 \n• SAR 2,750 - SAR 20,001 - 25,000 \n• SAR 3,250 - SAR 25,001 - 30,000 \n• SAR 3,950 - SAR 30,001 - 40,000\n• SAR 5,000 - SAR 40,001 - 80,000",
+  "raw": "EOR fee:\n\u2022 SAR 2,250 (USD 600) - for salary ranging from SAR 1,000 - 20,000 \n\u2022 SAR 2,750 - SAR 20,001 - 25,000 \n\u2022 SAR 3,250 - SAR 25,001 - 30,000 \n\u2022 SAR 3,950 - SAR 30,001 - 40,000\n\u2022 SAR 5,000 - SAR 40,001 - 80,000",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "EOR fee:\n• SAR 2,400–2,500 (USD 750–850) - for salary ranging from SAR 1,000 - 20,000 \n• SAR 2,900–3,000 - SAR 20,001 - 25,000 \n• SAR 3,400–3,500 - SAR 25,001 - 30,000 \n• SAR 4,100–4,200 - SAR 30,001 - 40,000\n• SAR 5,150–5,250 - SAR 40,001 - 80,000",
+  "slasifyFormula": "EOR fee:\n\u2022 SAR 2,400\u20132,500 (USD 750\u2013850) - for salary ranging from SAR 1,000 - 20,000 \n\u2022 SAR 2,900\u20133,000 - SAR 20,001 - 25,000 \n\u2022 SAR 3,400\u20133,500 - SAR 25,001 - 30,000 \n\u2022 SAR 4,100\u20134,200 - SAR 30,001 - 40,000\n\u2022 SAR 5,150\u20135,250 - SAR 40,001 - 80,000",
   "requiresInput": [
    "grossSalary"
   ]
  },
  {
-  "raw": "EOR fee:\n• SAR 2,250 (USD 600) - SAR 1,000 - 20,000 \n• SAR 2,750 - SAR 20,001 - 25,000 \n• SAR 3,250 - SAR 25,001 - 30,000 \n• SAR 3,950 - SAR 30,001 - 40,000\n• SAR 5,000 - SAR 40,001 - 80,000\n\nSaudization Fee\n• SAR 1,500 / month",
+  "raw": "EOR fee:\n\u2022 SAR 2,250 (USD 600) - SAR 1,000 - 20,000 \n\u2022 SAR 2,750 - SAR 20,001 - 25,000 \n\u2022 SAR 3,250 - SAR 25,001 - 30,000 \n\u2022 SAR 3,950 - SAR 30,001 - 40,000\n\u2022 SAR 5,000 - SAR 40,001 - 80,000\n\nSaudization Fee\n\u2022 SAR 1,500 / month",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "EOR fee:\n• SAR 2,500–2,600 (USD 850–950) - SAR 1,000 - 20,000 \n• SAR 3,000–3,100 - SAR 20,001 - 25,000 \n• SAR 3,500–3,600 - SAR 25,001 - 30,000 \n• SAR 4,200–4,300 - SAR 30,001 - 40,000\n• SAR 5,250–5,350 - SAR 40,001 - 80,000\n\nSaudization Fee\n• SAR 1,500–1,510 / month",
+  "slasifyFormula": "EOR fee:\n\u2022 SAR 2,500\u20132,600 (USD 850\u2013950) - SAR 1,000 - 20,000 \n\u2022 SAR 3,000\u20133,100 - SAR 20,001 - 25,000 \n\u2022 SAR 3,500\u20133,600 - SAR 25,001 - 30,000 \n\u2022 SAR 4,200\u20134,300 - SAR 30,001 - 40,000\n\u2022 SAR 5,250\u20135,350 - SAR 40,001 - 80,000\n\nSaudization Fee\n\u2022 SAR 1,500\u20131,510 / month",
   "requiresInput": [
    "grossSalary"
   ]
  },
  {
-  "raw": "EUR 700 + EUR 745 Saudization Fee\n• 1.5% on bonus and reimbursement",
+  "raw": "EUR 700 + EUR 745 Saudization Fee\n\u2022 1.5% on bonus and reimbursement",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "EUR 950–1,050 + EUR 745–755 Saudization Fee\n• 1.5% on bonus and reimbursement",
+  "slasifyFormula": "EUR 950\u20131,050 + EUR 745\u2013755 Saudization Fee\n\u2022 1.5% on bonus and reimbursement",
   "requiresInput": [
    "grossSalary"
   ]
@@ -963,16 +963,16 @@
   "raw": "USD 1,750 or 15% (whichever higher)",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "USD 1,900–2,000 or 15% + USD 150–250 (whichever higher)",
+  "slasifyFormula": "USD 1,900\u20132,000 or 15% of Gross Salary/TEC + USD 150\u2013250 (whichever higher)",
   "requiresInput": [
    "grossSalary"
   ]
  },
  {
-  "raw": "• 8% of total payroll turnover for salary up to EUR 4,000\n• 5% of total payroll turnover for salary higher than EUR 4,000",
+  "raw": "\u2022 8% of total payroll turnover for salary up to EUR 4,000\n\u2022 5% of total payroll turnover for salary higher than EUR 4,000",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "• 8% of total payroll turnover + USD 150–250 for salary up to EUR 4,000\n• 5% of total payroll turnover + USD 150–250 for salary higher than EUR 4,000",
+  "slasifyFormula": "\u2022 8% of total payroll turnover + USD 150\u2013250 for salary up to EUR 4,000\n\u2022 5% of total payroll turnover + USD 150\u2013250 for salary higher than EUR 4,000",
   "requiresInput": [
    "grossSalary"
   ]
@@ -981,14 +981,14 @@
   "raw": "USD 550 + 2% on invoice + Reimbursement Fee: 5% on costs",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "USD 700–800 + 2% on invoice + Reimbursement Fee: 5% on costs",
+  "slasifyFormula": "USD 700\u2013800 + 2% on invoice + Reimbursement Fee: 5% on costs",
   "requiresInput": []
  },
  {
   "raw": "USD 550 + 2% on invoice + Reimbursement Fee: 5% on costs",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "USD 800–900 + 2% on invoice + Reimbursement Fee: 5% on costs",
+  "slasifyFormula": "USD 800\u2013900 + 2% on invoice + Reimbursement Fee: 5% on costs",
   "requiresInput": []
  },
  {
@@ -1013,17 +1013,17 @@
   "requiresInput": []
  },
  {
-  "raw": "• Waived for placements more than 6 months\n• One month service fee for placements under 6 months",
+  "raw": "\u2022 Waived for placements more than 6 months\n\u2022 One month service fee for placements under 6 months",
   "feeKey": "terminationFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "• Waived for placements more than 6 months\n• One month service fee for placements under 6 months",
+  "slasifyFormula": "\u2022 Waived for placements more than 6 months\n\u2022 One month service fee for placements under 6 months",
   "requiresInput": []
  },
  {
   "raw": "USD 1,400 (N/A as of Jan. 2024)",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "USD 1,650–1,750 (N/A as of Jan. 2024)",
+  "slasifyFormula": "USD 1,650\u20131,750 (N/A as of Jan. 2024)",
   "requiresInput": []
  },
  {
@@ -1034,17 +1034,17 @@
   "requiresInput": []
  },
  {
-  "raw": "• Waived for placements more than 6 months\n• One month service fee for placements under 6 months",
+  "raw": "\u2022 Waived for placements more than 6 months\n\u2022 One month service fee for placements under 6 months",
   "feeKey": "terminationFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "• Waived for placements more than 6 months\n• One month service fee for placements under 6 months",
+  "slasifyFormula": "\u2022 Waived for placements more than 6 months\n\u2022 One month service fee for placements under 6 months",
   "requiresInput": []
  },
  {
   "raw": "12% on gross salary",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "12% of gross salary + USD 150–250",
+  "slasifyFormula": "12% of gross salary + USD 150\u2013250",
   "requiresInput": [
    "grossSalary"
   ]
@@ -1053,7 +1053,7 @@
   "raw": "USD 200 or 10%",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "USD 350–450 or 10% + USD 150–250",
+  "slasifyFormula": "USD 350\u2013450 or 10% of Gross Salary/TEC + USD 150\u2013250",
   "requiresInput": [
    "grossSalary"
   ]
@@ -1069,7 +1069,7 @@
   "raw": "35% of gross monthly payroll cost",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "35% of gross monthly payroll cost + USD 150–250",
+  "slasifyFormula": "35% of gross monthly payroll cost + USD 150\u2013250",
   "requiresInput": [
    "grossSalary"
   ]
@@ -1078,7 +1078,7 @@
   "raw": "4-6%",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "4-6% + USD 150–250",
+  "slasifyFormula": "4-6% of Gross Salary/TEC + USD 150\u2013250",
   "requiresInput": [
    "grossSalary"
   ]
@@ -1087,14 +1087,14 @@
   "raw": "CHF 600",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "CHF 750–850",
+  "slasifyFormula": "CHF 750\u2013850",
   "requiresInput": []
  },
  {
-  "raw": "Monthly salary up to 49,999 @ 20%\nMonthly salary 50,000 – 89,999 @ 17%\nMonthly salary 90,000 and above @ 13%",
+  "raw": "Monthly salary up to 49,999 @ 20%\nMonthly salary 50,000 \u2013 89,999 @ 17%\nMonthly salary 90,000 and above @ 13%",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "Monthly salary up to 49,999 @ 20% + USD 250–350\nMonthly salary 50,000 – 89,999 @ 17% + USD 250–350\nMonthly salary 90,000 and above @ 13% + USD 250–350",
+  "slasifyFormula": "Monthly salary up to 49,999 @ 20% + USD 250\u2013350\nMonthly salary 50,000 \u2013 89,999 @ 17% + USD 250\u2013350\nMonthly salary 90,000 and above @ 13% + USD 250\u2013350",
   "requiresInput": [
    "grossSalary"
   ]
@@ -1103,7 +1103,7 @@
   "raw": "12.5% of Gross Salary",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "12.5% of Gross Salary + USD 150–250",
+  "slasifyFormula": "12.5% of Gross Salary + USD 150\u2013250",
   "requiresInput": [
    "grossSalary"
   ]
@@ -1112,7 +1112,7 @@
   "raw": "12-15% depending on salary",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "12-15% + USD 250–350 depending on salary",
+  "slasifyFormula": "12-15% + USD 250\u2013350 depending on salary",
   "requiresInput": [
    "grossSalary"
   ]
@@ -1121,7 +1121,7 @@
   "raw": "8% on gross salary",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
-  "slasifyFormula": "8% of gross salary + USD 150–250",
+  "slasifyFormula": "8% of gross salary + USD 150\u2013250",
   "requiresInput": [
    "grossSalary"
   ]
@@ -1136,10 +1136,10 @@
   ]
  },
  {
-  "raw": "EUR 330 + EUR 190 local quota fee\n• 1.5% on bonus and reimbursement",
+  "raw": "EUR 330 + EUR 190 local quota fee\n\u2022 1.5% on bonus and reimbursement",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "EUR 580–680 + EUR 190–200 local quota fee\n• 1.5% on bonus and reimbursement",
+  "slasifyFormula": "EUR 580\u2013680 + EUR 190\u2013200 local quota fee\n\u2022 1.5% on bonus and reimbursement",
   "requiresInput": [
    "grossSalary"
   ]
@@ -1148,23 +1148,23 @@
   "raw": "EUR 500 + 2% on invoice + Reimbursement Fee: 5% on costs",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "EUR 750–850 + 2% on invoice + Reimbursement Fee: 5% on costs",
+  "slasifyFormula": "EUR 750\u2013850 + 2% on invoice + Reimbursement Fee: 5% on costs",
   "requiresInput": []
  },
  {
-  "raw": "• Gratuity: 21 days of basic salary calculation will be charged in advance *Paid to the employee as and when it becomes due in their full & final settlement",
+  "raw": "\u2022 Gratuity: 21 days of basic salary calculation will be charged in advance *Paid to the employee as and when it becomes due in their full & final settlement",
   "feeKey": "deposit",
   "serviceType": "Local EOR",
-  "slasifyFormula": "• Gratuity: 21 days of basic salary calculation will be charged in advance *Paid to the employee as and when it becomes due in their full & final settlement",
+  "slasifyFormula": "\u2022 Gratuity: 21 days of basic salary calculation will be charged in advance *Paid to the employee as and when it becomes due in their full & final settlement",
   "requiresInput": [
    "grossSalary"
   ]
  },
  {
-  "raw": "EUR 330 + EUR 190 Emiratization Fee\n• 1.5% on bonus and reimbursement",
+  "raw": "EUR 330 + EUR 190 Emiratization Fee\n\u2022 1.5% on bonus and reimbursement",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "EUR 580–680 + EUR 190–200 Emiratization Fee\n• 1.5% on bonus and reimbursement",
+  "slasifyFormula": "EUR 580\u2013680 + EUR 190\u2013200 Emiratization Fee\n\u2022 1.5% on bonus and reimbursement",
   "requiresInput": [
    "grossSalary"
   ]
@@ -1182,7 +1182,7 @@
   "raw": "AED 1660 (Incl. Emiritization)",
   "feeKey": "serviceFee",
   "serviceType": "Expat EOR",
-  "slasifyFormula": "AED 1,910–2,010 (Incl. Emiritization)",
+  "slasifyFormula": "AED 1,910\u20132,010 (Incl. Emiritization)",
   "requiresInput": []
  },
  {

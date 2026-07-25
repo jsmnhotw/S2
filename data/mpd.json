@@ -9,6 +9,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 18.0,
+    "basis": "TEC",
     "min_currency": "USD",
     "min_amount": 1600.0,
     "raw_context": "18% on TEC min USD 1,600",
@@ -46,6 +47,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 10.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 1000.0,
     "raw_context": "10% min USD 1,000",
@@ -55,6 +57,7 @@
    "setupFee": {
     "kind": "percent_min",
     "pct": 10.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 1000.0,
     "raw_context": "10% min USD 1,000",
@@ -566,7 +569,7 @@
    "serviceFee": {
     "kind": "llm",
     "raw": "EUR 500 or 10%",
-    "slasifyFormula": "EUR 650\u2013750 or (10% + USD 150\u2013250)",
+    "slasifyFormula": "EUR 650\u2013750 or (10% of Gross Salary/TEC + USD 150\u2013250)",
     "requiresInput": [
      "grossSalary"
     ]
@@ -602,6 +605,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 15.0,
+    "basis": null,
     "note": null,
     "raw": "15%"
    },
@@ -640,6 +644,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 18.0,
+    "basis": null,
     "note": null,
     "raw": "18%"
    },
@@ -1223,6 +1228,7 @@
    "deposit": {
     "kind": "percent",
     "pct": 20.0,
+    "basis": null,
     "note": null,
     "raw": "20%"
    },
@@ -1259,6 +1265,7 @@
    "deposit": {
     "kind": "percent",
     "pct": 20.0,
+    "basis": null,
     "note": null,
     "raw": "20%"
    },
@@ -1947,6 +1954,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 7.0,
+    "basis": null,
     "note": null,
     "raw": "7%"
    },
@@ -1979,6 +1987,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 7.0,
+    "basis": null,
     "note": null,
     "raw": "7%"
    },
@@ -2253,6 +2262,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 18.0,
+    "basis": null,
     "note": null,
     "raw": "18%"
    },
@@ -2289,6 +2299,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 14.0,
+    "basis": null,
     "note": null,
     "raw": "14%"
    },
@@ -2596,6 +2607,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 10.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 400.0,
     "raw_context": "\u2022 10% min USD 400",
@@ -3840,6 +3852,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 13.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 1300.0,
     "raw_context": "13% min USD 1300, whichever is higher",
@@ -4785,6 +4798,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 12.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 200.0,
     "raw_context": "12% min USD 200",
@@ -4828,6 +4842,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 15.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 650.0,
     "raw_context": "15% min USD 650",
@@ -5158,6 +5173,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 5.0,
+    "basis": null,
     "note": null,
     "raw": "5%"
    },
@@ -5504,6 +5520,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 8.0,
+    "basis": null,
     "note": null,
     "raw": "8%"
    },
@@ -6341,6 +6358,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 13.0,
+    "basis": "TEC",
     "min_currency": "USD",
     "min_amount": 750.0,
     "raw_context": "13% of TEC, min USD 750",
@@ -6925,6 +6943,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 10.0,
+    "basis": "TEC",
     "min_currency": "USD",
     "min_amount": 200.0,
     "raw_context": "10% on TEC min USD 200",
@@ -7638,6 +7657,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 8.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 250.0,
     "raw_context": "\u2022 Freelancers - 8% with min USD 250",
@@ -7957,6 +7977,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 9.0,
+    "basis": null,
     "note": null,
     "raw": "9%"
    },
@@ -9152,6 +9173,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 6.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 400.0,
     "raw_context": "6% min USD 400",
@@ -10480,6 +10502,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 17.0,
+    "basis": null,
     "note": null,
     "raw": "17%"
    },
@@ -10547,6 +10570,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 7.5,
+    "basis": "TEC",
     "min_currency": "EUR",
     "min_amount": 700.0,
     "raw_context": "7.5% on TEC min EUR 700",
@@ -10946,6 +10970,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 10.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 400.0,
     "raw_context": "\u2022 10% min USD 400",
@@ -11660,6 +11685,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 7.5,
+    "basis": "CTC",
     "min_currency": "EUR",
     "min_amount": 600.0,
     "raw_context": "7.5% of CTC min EUR 600",
@@ -11701,6 +11727,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 7.5,
+    "basis": "CTC",
     "min_currency": "EUR",
     "min_amount": 600.0,
     "raw_context": "7.5% of CTC min EUR 600",
@@ -12753,6 +12780,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 18.0,
+    "basis": null,
     "note": null,
     "raw": "18%"
    },
@@ -12932,6 +12960,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 4.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 500.0,
     "raw_context": "4% or min USD 500 for salary up to USD 10,000",
@@ -13195,6 +13224,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 13.0,
+    "basis": null,
     "note": null,
     "raw": "13%"
    },
@@ -14269,6 +14299,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 5.0,
+    "basis": "Gross Salary",
     "min_currency": "USD",
     "min_amount": 500.0,
     "raw_context": "5% on gross salary min USD 500",
@@ -14498,6 +14529,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 5.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 100.0,
     "raw_context": "5% min USD 100",
@@ -14540,6 +14572,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 5.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 250.0,
     "raw_context": "5% min USD 250",
@@ -14582,6 +14615,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 10.0,
+    "basis": null,
     "note": null,
     "raw": "10%"
    },
@@ -14764,6 +14798,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 7.5,
+    "basis": null,
     "min_currency": "EUR",
     "min_amount": 600.0,
     "raw_context": "7.5%, min EUR 600",
@@ -14978,6 +15013,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 10.0,
+    "basis": null,
     "note": null,
     "raw": "10%"
    },
@@ -15010,7 +15046,7 @@
    "serviceFee": {
     "kind": "llm",
     "raw": "11-15%",
-    "slasifyFormula": "11-15% + USD 150\u2013250",
+    "slasifyFormula": "11-15% of Gross Salary/TEC + USD 150\u2013250",
     "requiresInput": [
      "grossSalary"
     ]
@@ -16627,6 +16663,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 20.0,
+    "basis": null,
     "note": null,
     "raw": "20%"
    },
@@ -17555,6 +17592,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 10.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 100.0,
     "raw_context": "10% min USD 100",
@@ -17764,6 +17802,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 12.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 200.0,
     "raw_context": "12% min USD 200",
@@ -19157,6 +19196,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 10.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 200.0,
     "raw_context": "10% min USD 200",
@@ -19906,7 +19946,7 @@
    "serviceFee": {
     "kind": "llm",
     "raw": "below MYR 12,500 - MYR 1,000\nabove MYR 12,500 - 8% capped at MYR 1,800\noff-cycle payment request - MYR 350 / transaction",
-    "slasifyFormula": "below MYR 12,500 - MYR 1,250\u20131,350\nabove MYR 12,500 - 8% + USD 250\u2013350 capped at MYR 1,800\noff-cycle payment request - MYR 350\u2013360 / transaction",
+    "slasifyFormula": "below MYR 12,500 - MYR 1,250\u20131,350\nabove MYR 12,500 - 8% of Gross Salary + USD 250\u2013350 capped at MYR 1,800\noff-cycle payment request - MYR 350\u2013360 / transaction",
     "requiresInput": [
      "grossSalary"
     ]
@@ -20276,6 +20316,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 10.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 400.0,
     "raw_context": "10%, min USD 400, bonus/reimbursement 10%",
@@ -20989,7 +21030,7 @@
    "serviceFee": {
     "kind": "llm",
     "raw": "USD 350 or 12%",
-    "slasifyFormula": "USD 500\u2013600 or 12% + USD 150\u2013250",
+    "slasifyFormula": "USD 500\u2013600 or 12% of Gross Salary/TEC + USD 150\u2013250",
     "requiresInput": [
      "grossSalary"
     ]
@@ -21310,6 +21351,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 18.0,
+    "basis": null,
     "note": null,
     "raw": "18%"
    },
@@ -21456,7 +21498,7 @@
    "serviceFee": {
     "kind": "llm",
     "raw": "70 EUR but not less than 4%",
-    "slasifyFormula": "EUR 220\u2013320 but not less than 4% + USD 150\u2013250",
+    "slasifyFormula": "EUR 220\u2013320 but not less than 4% of Gross Salary/TEC + USD 150\u2013250",
     "requiresInput": [
      "grossSalary"
     ]
@@ -22163,6 +22205,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 15.0,
+    "basis": null,
     "note": null,
     "raw": "15%"
    },
@@ -22195,6 +22238,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 15.0,
+    "basis": null,
     "note": null,
     "raw": "15%"
    },
@@ -22625,6 +22669,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 12.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 200.0,
     "raw_context": "12% min USD 200",
@@ -22668,6 +22713,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 15.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 500.0,
     "raw_context": "15% min USD 500",
@@ -26065,6 +26111,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 15.0,
+    "basis": null,
     "note": null,
     "raw": "15%"
    },
@@ -27454,6 +27501,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 10.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 400.0,
     "raw_context": "\u2022 10% min USD 400",
@@ -27527,7 +27575,7 @@
    "serviceFee": {
     "kind": "llm",
     "raw": "14%, Minimum charge USD 400",
-    "slasifyFormula": "14% + USD 250\u2013350, Minimum charge USD 400",
+    "slasifyFormula": "14% of Gross Salary/TEC + USD 250\u2013350, Minimum charge USD 400",
     "requiresInput": [
      "grossSalary"
     ]
@@ -28307,7 +28355,7 @@
    "serviceFee": {
     "kind": "llm",
     "raw": "USD 1,750 or 15% (whichever higher)",
-    "slasifyFormula": "USD 1,900\u20132,000 or 15% + USD 150\u2013250 (whichever higher)",
+    "slasifyFormula": "USD 1,900\u20132,000 or 15% of Gross Salary/TEC + USD 150\u2013250 (whichever higher)",
     "requiresInput": [
      "grossSalary"
     ]
@@ -29730,6 +29778,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 9.0,
+    "basis": null,
     "note": null,
     "raw": "9%"
    },
@@ -30204,6 +30253,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 8.0,
+    "basis": null,
     "note": null,
     "raw": "8%"
    },
@@ -31605,7 +31655,7 @@
    "serviceFee": {
     "kind": "llm",
     "raw": "USD 200 or 10%",
-    "slasifyFormula": "USD 350\u2013450 or 10% + USD 150\u2013250",
+    "slasifyFormula": "USD 350\u2013450 or 10% of Gross Salary/TEC + USD 150\u2013250",
     "requiresInput": [
      "grossSalary"
     ]
@@ -32107,7 +32157,7 @@
    "serviceFee": {
     "kind": "llm",
     "raw": "4-6%",
-    "slasifyFormula": "4-6% + USD 150\u2013250",
+    "slasifyFormula": "4-6% of Gross Salary/TEC + USD 150\u2013250",
     "requiresInput": [
      "grossSalary"
     ]
@@ -32641,6 +32691,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 5.0,
+    "basis": null,
     "min_currency": "THB",
     "min_amount": 2500.0,
     "raw_context": "5%, with min. THB 2500",
@@ -32676,6 +32727,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 20.0,
+    "basis": null,
     "min_currency": "THB",
     "min_amount": 25000.0,
     "raw_context": "\u2022 20% min THB 25,000",
@@ -32900,6 +32952,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 8.0,
+    "basis": null,
     "min_currency": "THB",
     "min_amount": 5000.0,
     "raw_context": "8% min THB 5,000",
@@ -32937,6 +32990,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 8.0,
+    "basis": null,
     "min_currency": "THB",
     "min_amount": 18000.0,
     "raw_context": "8% min THB 18,000",
@@ -33044,6 +33098,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 12.0,
+    "basis": null,
     "note": null,
     "raw": "12%"
    },
@@ -34691,6 +34746,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 10.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 400.0,
     "raw_context": "\u2022\u00a010% min USD 400",
@@ -34731,6 +34787,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 10.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 400.0,
     "raw_context": "\u2022\u00a010% min USD 400",
@@ -36146,6 +36203,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 10.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 250.0,
     "raw_context": "\u2022 10% min USD 250",
@@ -36186,6 +36244,7 @@
    "serviceFee": {
     "kind": "percent_min",
     "pct": 10.0,
+    "basis": null,
     "min_currency": "USD",
     "min_amount": 250.0,
     "raw_context": "\u2022 10% min USD 250",
@@ -36395,6 +36454,7 @@
    "serviceFee": {
     "kind": "percent",
     "pct": 17.0,
+    "basis": null,
     "note": null,
     "raw": "17%"
    },

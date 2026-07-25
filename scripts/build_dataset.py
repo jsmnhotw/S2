@@ -31,6 +31,22 @@ def clean_num(s):
 def norm_cur(c):
     return c.upper().replace('BD', 'BHD')
 
+BASIS_PATTERNS = [
+    (r'\bTEC\b', 'TEC'),
+    (r'\bCTC\b', 'CTC'),
+    (r'total\s+employment\s+cost', 'TEC'),
+    (r'gross\s+salary', 'Gross Salary'),
+    (r'\bemployee\s+cost\b', 'Employee Cost'),
+]
+
+def extract_basis(text):
+    """Preserve the vendor's stated basis (TEC/CTC/gross salary) instead of assuming one.
+    Returns None if the vendor didn't state a basis at all (caller then defaults display-side)."""
+    for pattern, label in BASIS_PATTERNS:
+        if re.search(pattern, text, re.I):
+            return label
+    return None
+
 def try_parse(raw):
     s = raw.strip()
     if not s or s.upper() in ('N/A', 'NONE', 'NA'):
@@ -58,11 +74,11 @@ def try_parse(raw):
 
     m = re.fullmatch(r'(\d+(?:\.\d+)?)\s*%', first_line)
     if m:
-        return {'kind': 'percent', 'pct': float(m.group(1)), 'note': rest or None}
+        return {'kind': 'percent', 'pct': float(m.group(1)), 'basis': extract_basis(first_line), 'note': rest or None}
 
     m = re.search(r'(\d+(?:\.\d+)?)\s*%.*?min(?:imum)?\.?\s*' + CUR + r'\s*([\d,]+(?:\.\d+)?)', first_line, re.I)
     if m and len(first_line) < 150:
-        return {'kind': 'percent_min', 'pct': float(m.group(1)), 'min_currency': norm_cur(m.group(2)), 'min_amount': clean_num(m.group(3)), 'raw_context': first_line, 'note': rest or None}
+        return {'kind': 'percent_min', 'pct': float(m.group(1)), 'basis': extract_basis(first_line), 'min_currency': norm_cur(m.group(2)), 'min_amount': clean_num(m.group(3)), 'raw_context': first_line, 'note': rest or None}
 
     m = re.fullmatch(r'(\d+(?:\.\d+)?)\s*months?(?:\s+(?:gross\s+)?salary)?(?:\s*\+\s*service\s*fee)?\.?', first_line, re.I)
     if m:
