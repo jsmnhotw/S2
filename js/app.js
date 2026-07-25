@@ -5,7 +5,7 @@ const FEE_LABELS = {
   terminationFee: 'Termination Fee',
 };
 const FEE_ORDER = ['serviceFee', 'setupFee', 'deposit', 'terminationFee'];
-const CURRENCY_OPTIONS = ['USD', 'EUR', 'GBP', 'SAR', 'BHD', 'INR', 'JPY', 'AUD', 'HKD', 'PLN', 'CAD', 'AED', 'QAR', 'THB', 'MMK', 'PHP', 'IDR', 'EGP', 'KWD', 'CNY'];
+const CURRENCY_OPTIONS = ['USD', 'EUR', 'GBP', 'SAR', 'BHD', 'INR', 'JPY', 'AUD', 'HKD', 'PLN', 'CAD', 'AED', 'QAR', 'THB', 'MMK', 'PHP', 'IDR', 'EGP', 'KWD', 'CNY', 'CZK', 'MYR', 'NOK', 'OMR', 'CHF'];
 
 let DATA = [];
 let INDEX = {}; // country -> serviceType -> [rows]

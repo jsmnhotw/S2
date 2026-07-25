@@ -7,6 +7,8 @@
 const FX_STATIC_FALLBACK_USD_BASE = {
   // amount of 1 unit of currency X per 1 USD (i.e. rate to multiply a USD amount by to get X)
   BHD: 0.376, SAR: 3.75, AED: 3.6725, QAR: 3.64, KWD: 0.307, MMK: 2100, EGP: 49.5,
+  OMR: 0.3845, // fixed peg since 1986, safe to keep static
+  MYR: 4.7, // NOT pegged - floats, this is an approximation only and will drift; verify before quoting
 };
 
 const FX_CACHE_KEY = 'slasify_fx_rates_v1';

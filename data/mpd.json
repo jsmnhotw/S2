@@ -19731,10 +19731,11 @@
     ]
    },
    "setupFee": {
-    "kind": "llm",
-    "raw": "MYR 1,500",
-    "slasifyFormula": "MYR 1,750",
-    "requiresInput": []
+    "kind": "flat",
+    "currency": "MYR",
+    "amount": 1500.0,
+    "note": null,
+    "raw": "MYR 1,500"
    },
    "deposit": {
     "kind": "months_salary",
@@ -19952,10 +19953,11 @@
     ]
    },
    "setupFee": {
-    "kind": "llm",
-    "raw": "MYR 500",
-    "slasifyFormula": "MYR 750",
-    "requiresInput": []
+    "kind": "flat",
+    "currency": "MYR",
+    "amount": 500.0,
+    "note": null,
+    "raw": "MYR 500"
    },
    "deposit": {
     "kind": "months_salary",
@@ -24361,16 +24363,18 @@
   "serviceType": "Local EOR",
   "fees": {
    "serviceFee": {
-    "kind": "llm",
-    "raw": "NOK 6,000",
-    "slasifyFormula": "NOK 6,150\u20136,250",
-    "requiresInput": []
+    "kind": "flat",
+    "currency": "NOK",
+    "amount": 6000.0,
+    "note": null,
+    "raw": "NOK 6,000"
    },
    "setupFee": {
-    "kind": "llm",
-    "raw": "NOK 5,000",
-    "slasifyFormula": "NOK 5,150",
-    "requiresInput": []
+    "kind": "flat",
+    "currency": "NOK",
+    "amount": 5000.0,
+    "note": null,
+    "raw": "NOK 5,000"
    },
    "deposit": {
     "kind": "none",
@@ -24722,10 +24726,11 @@
     ]
    },
    "setupFee": {
-    "kind": "llm",
-    "raw": "OMR 250",
-    "slasifyFormula": "OMR 400",
-    "requiresInput": []
+    "kind": "flat",
+    "currency": "OMR",
+    "amount": 250.0,
+    "note": null,
+    "raw": "OMR 250"
    },
    "deposit": {
     "kind": "none",
@@ -24758,10 +24763,11 @@
     ]
    },
    "setupFee": {
-    "kind": "llm",
-    "raw": "OMR 250",
-    "slasifyFormula": "OMR 500",
-    "requiresInput": []
+    "kind": "flat",
+    "currency": "OMR",
+    "amount": 250.0,
+    "note": null,
+    "raw": "OMR 250"
    },
    "deposit": {
     "kind": "none",
@@ -32296,10 +32302,11 @@
   "serviceType": "Local EOR",
   "fees": {
    "serviceFee": {
-    "kind": "llm",
-    "raw": "CHF 600",
-    "slasifyFormula": "CHF 750\u2013850",
-    "requiresInput": []
+    "kind": "flat",
+    "currency": "CHF",
+    "amount": 600.0,
+    "note": null,
+    "raw": "CHF 600"
    },
    "setupFee": {
     "kind": "none",

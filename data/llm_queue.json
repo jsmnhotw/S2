@@ -1145,30 +1145,8 @@
   ]
  },
  {
-  "raw": "MYR 1,500",
-  "feeKey": "setupFee",
-  "serviceType": "Expat EOR",
-  "examples": [
-   {
-    "country": "Malaysia",
-    "vendor": "Great Pyramid"
-   }
-  ]
- },
- {
   "raw": "below MYR 12,500 - MYR 1,000\nabove MYR 12,500 - 8% capped at MYR 1,800\noff-cycle payment request - MYR 350 / transaction",
   "feeKey": "serviceFee",
-  "serviceType": "Expat EOR",
-  "examples": [
-   {
-    "country": "Malaysia",
-    "vendor": "GP Outsourcing Asia"
-   }
-  ]
- },
- {
-  "raw": "MYR 500",
-  "feeKey": "setupFee",
   "serviceType": "Expat EOR",
   "examples": [
    {
@@ -1307,28 +1285,6 @@
   ]
  },
  {
-  "raw": "NOK 6,000",
-  "feeKey": "serviceFee",
-  "serviceType": "Local EOR",
-  "examples": [
-   {
-    "country": "Norway",
-    "vendor": "GTS Nordics"
-   }
-  ]
- },
- {
-  "raw": "NOK 5,000",
-  "feeKey": "setupFee",
-  "serviceType": "Local EOR",
-  "examples": [
-   {
-    "country": "Norway",
-    "vendor": "GTS Nordics"
-   }
-  ]
- },
- {
   "raw": "OMR 350 *pricing for employees on salaries greater than 4,000 OMR to be provided on a project by project basis",
   "feeKey": "serviceFee",
   "serviceType": "Local EOR",
@@ -1340,30 +1296,8 @@
   ]
  },
  {
-  "raw": "OMR 250",
-  "feeKey": "setupFee",
-  "serviceType": "Local EOR",
-  "examples": [
-   {
-    "country": "Oman",
-    "vendor": "Auxilium"
-   }
-  ]
- },
- {
   "raw": "OMR 350 *pricing for employees on salaries greater than 4,000 OMR to be provided on a project by project basis",
   "feeKey": "serviceFee",
-  "serviceType": "Expat EOR",
-  "examples": [
-   {
-    "country": "Oman",
-    "vendor": "Auxilium"
-   }
-  ]
- },
- {
-  "raw": "OMR 250",
-  "feeKey": "setupFee",
   "serviceType": "Expat EOR",
   "examples": [
    {
@@ -1754,17 +1688,6 @@
    {
     "country": "Switzerland",
     "vendor": "Accurity Group"
-   }
-  ]
- },
- {
-  "raw": "CHF 600",
-  "feeKey": "serviceFee",
-  "serviceType": "Local EOR",
-  "examples": [
-   {
-    "country": "Switzerland",
-    "vendor": "Access Financial"
    }
   ]
  },

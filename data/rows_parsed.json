@@ -19411,7 +19411,10 @@
     "raw": "\u2022 18% on gross salary min RM 1500, max RM 4,000\n\u2022 5% on reimbursement\n\nOR\n\nRM 1,500 per pax for 1 - 10 headcount and \nRM 1,200 for the 11th headcount onwards"
    },
    "setupFee": {
-    "kind": "needs_llm",
+    "kind": "flat",
+    "currency": "MYR",
+    "amount": 1500.0,
+    "note": null,
     "raw": "MYR 1,500"
    },
    "deposit": {
@@ -19626,7 +19629,10 @@
     "raw": "below MYR 12,500 - MYR 1,000\nabove MYR 12,500 - 8% capped at MYR 1,800\noff-cycle payment request - MYR 350 / transaction"
    },
    "setupFee": {
-    "kind": "needs_llm",
+    "kind": "flat",
+    "currency": "MYR",
+    "amount": 500.0,
+    "note": null,
     "raw": "MYR 500"
    },
    "deposit": {
@@ -23965,11 +23971,17 @@
   "serviceType": "Local EOR",
   "fees": {
    "serviceFee": {
-    "kind": "needs_llm",
+    "kind": "flat",
+    "currency": "NOK",
+    "amount": 6000.0,
+    "note": null,
     "raw": "NOK 6,000"
    },
    "setupFee": {
-    "kind": "needs_llm",
+    "kind": "flat",
+    "currency": "NOK",
+    "amount": 5000.0,
+    "note": null,
     "raw": "NOK 5,000"
    },
    "deposit": {
@@ -24318,7 +24330,10 @@
     "raw": "OMR 350 *pricing for employees on salaries greater than 4,000 OMR to be provided on a project by project basis"
    },
    "setupFee": {
-    "kind": "needs_llm",
+    "kind": "flat",
+    "currency": "OMR",
+    "amount": 250.0,
+    "note": null,
     "raw": "OMR 250"
    },
    "deposit": {
@@ -24348,7 +24363,10 @@
     "raw": "OMR 350 *pricing for employees on salaries greater than 4,000 OMR to be provided on a project by project basis"
    },
    "setupFee": {
-    "kind": "needs_llm",
+    "kind": "flat",
+    "currency": "OMR",
+    "amount": 250.0,
+    "note": null,
     "raw": "OMR 250"
    },
    "deposit": {
@@ -31720,7 +31738,10 @@
   "serviceType": "Local EOR",
   "fees": {
    "serviceFee": {
-    "kind": "needs_llm",
+    "kind": "flat",
+    "currency": "CHF",
+    "amount": 600.0,
+    "note": null,
     "raw": "CHF 600"
    },
    "setupFee": {
