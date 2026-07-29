@@ -94,25 +94,29 @@ function computeFlatMarginFee(fee, serviceType) {
   }
 }
 
+// Note: deposit itself carries no markup, but Slasify policy requires quoting at least
+// 1 month of gross salary regardless of the vendor's own terms (enforced in app.js's
+// computeDepositFigures) - so every case here needs grossSalary, even 'none', since that
+// floor still has to be expressed in dollars.
 function computeDeposit(fee) {
   switch (fee.kind) {
     case 'none':
-      return { formula: 'No deposit required.', requiresInput: [] };
+      return { formula: 'No deposit required.', requiresInput: ['grossSalary'] };
     case 'months_salary':
       return {
         formula: `${fee.months} month(s) of gross salary${fee.note ? ' — ' + fee.note : ''}`,
         requiresInput: ['grossSalary'], months: fee.months,
       };
     case 'flat':
-      return { formula: `${fee.currency} ${fmtMoney(fee.amount)}`, requiresInput: [], vendorAmount: { currency: fee.currency, amount: fee.amount } };
+      return { formula: `${fee.currency} ${fmtMoney(fee.amount)}`, requiresInput: ['grossSalary'], vendorAmount: { currency: fee.currency, amount: fee.amount } };
     case 'percent':
       return { formula: `${fee.pct}% of ${fee.basis || 'Gross Salary/TEC (per vendor terms)'}`, requiresInput: ['grossSalary'], pct: fee.pct };
     case 'unknown':
       return { formula: 'Vendor deposit terms not yet confirmed (TBC).', requiresInput: [], uncalculable: true };
     case 'llm':
-      return { formula: fee.slasifyFormula, requiresInput: fee.requiresInput || [], isLlmDerived: true };
+      return { formula: fee.slasifyFormula, requiresInput: Array.from(new Set([...(fee.requiresInput || []), 'grossSalary'])), isLlmDerived: true };
     default:
-      return { formula: fee.raw || fee.kind, requiresInput: [] };
+      return { formula: fee.raw || fee.kind, requiresInput: ['grossSalary'] };
   }
 }
 
