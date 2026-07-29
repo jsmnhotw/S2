@@ -49,7 +49,16 @@ python3 -m http.server 8000
   flat single number: +USD 150 (Local) / +USD 250 (Expat). If the vendor
   charges nothing, it's a standalone USD 0&ndash;150 (Local) / USD 0&ndash;250
   (Expat) range.
-- **Deposit**: pass-through, no markup.
+- **Deposit**: no markup, and shown as a plain description (never a dollar
+  figure) &mdash; e.g. "2 months gross salary", "1 month TEC". Slasify policy
+  requires quoting at least 1 month regardless of what the vendor asks for,
+  so the vendor's own wording is preserved verbatim whenever it already
+  meets that minimum; only when it's below 1 month (or the vendor requires
+  no deposit at all) does the tool substitute a "1 month [basis]" floor
+  description in its place.
+- **VAT**: informational only, shown verbatim as entered in the MPD, with no
+  computation applied &mdash; on the vendor reference card, in the finalize
+  step, and in the client PDF.
 - Secondary/incidental fees mentioned alongside a primary fee (reimbursement,
   wet-signing, out-of-cycle, etc.) get a small USD 0&ndash;10 margin.
 

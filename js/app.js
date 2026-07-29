@@ -5,8 +5,7 @@ const FEE_LABELS = {
   terminationFee: 'Termination Fee',
 };
 const FEE_ORDER = ['serviceFee', 'setupFee', 'deposit', 'terminationFee'];
-const COMMITTED_FEE_KEYS = ['serviceFee', 'setupFee', 'terminationFee']; // markup-based fees (vendor cost + margin floor)
-const ALL_COMMITTED_KEYS = [...COMMITTED_FEE_KEYS, 'deposit']; // deposit has its own floor rule (1 month gross salary minimum), not a markup
+const COMMITTED_FEE_KEYS = ['serviceFee', 'setupFee', 'terminationFee']; // markup-based fees (vendor cost + margin floor); deposit is a read-only description, not a committed number
 const CURRENCY_OPTIONS = ['USD', 'EUR', 'GBP', 'SAR', 'BHD', 'INR', 'JPY', 'AUD', 'HKD', 'PLN', 'CAD', 'AED', 'QAR', 'THB', 'MMK', 'PHP', 'IDR', 'EGP', 'KWD', 'CNY', 'CZK', 'MYR', 'NOK', 'OMR', 'CHF'];
 
 const DEFAULT_PAYMENT_TERMS = "Invoices are issued monthly in advance of each pay cycle. Payment is due within 15 days of the invoice date.\n[Placeholder - replace with Slasify's standard payment terms.]";
@@ -442,49 +441,6 @@ function presentationCurrencyFor(feeKey) {
   return fee.currency || 'USD';
 }
 
-// Deposit has no markup, but Slasify policy requires quoting at least 1 month of gross
-// salary regardless of what the vendor itself asks for - and never less than the vendor's
-// own requirement either, if that happens to be higher (e.g. Saudi Arabia's 2-month deposit).
-function computeDepositFigures() {
-  const row = state.vendorRow;
-  const fee = row.fees.deposit;
-  const result = computeFee(fee, 'deposit', row.serviceType);
-  if (result.uncalculable) return { ok: false, reason: 'uncalculable', result };
-  if (!fxTable) return { ok: false, reason: 'no-fx', result };
-
-  const salaryUsd = getSalaryUsd();
-  if (salaryUsd === null) return { ok: false, reason: 'no-salary', result };
-
-  let vendorUsd = null;
-  if (fee.kind === 'months_salary') {
-    vendorUsd = salaryUsd * fee.months;
-  } else if (fee.kind === 'flat') {
-    vendorUsd = toUSD(fee.amount, fee.currency, fxTable);
-  } else if (fee.kind === 'percent') {
-    vendorUsd = (salaryUsd * fee.pct) / 100;
-  }
-  // 'none' / 'unknown' / 'llm' -> vendorUsd stays null, no vendor-stated amount to compare against
-
-  const oneMonthUsd = salaryUsd;
-  const boundByVendor = vendorUsd !== null && vendorUsd >= oneMonthUsd;
-  const floorUsd = boundByVendor ? vendorUsd : oneMonthUsd;
-
-  const presentCur = presentationCurrencyFor('deposit');
-  const floorOrig = presentCur !== 'USD' ? fromUSD(floorUsd, presentCur, fxTable) : null;
-  const vendorOrig = (vendorUsd !== null && presentCur !== 'USD') ? fromUSD(vendorUsd, presentCur, fxTable) : null;
-
-  return {
-    ok: true,
-    boundByVendor,
-    floorUsd: roundUpTo5(floorUsd),
-    vendorUsd: vendorUsd !== null ? roundUpTo5(vendorUsd) : null,
-    floorOrig: floorOrig !== null ? roundUpTo5(floorOrig) : null,
-    vendorOrig: vendorOrig !== null ? roundUpTo5(vendorOrig) : null,
-    origCur: presentCur,
-    result,
-  };
-}
-
 function renderCommittedFees() {
   const wrap = document.getElementById('committed-fees');
   let html = '';
@@ -530,42 +486,24 @@ function renderCommittedFees() {
       </div>`;
   }
 
-  const depFigures = computeDepositFigures();
-  const depCur = depFigures.ok ? depFigures.origCur : 'USD';
-  let depGuideText, depFloor = null;
-
-  if (depFigures.ok) {
-    const floorDisplay = (depCur !== 'USD' && depFigures.floorOrig !== null) ? depFigures.floorOrig : depFigures.floorUsd;
-    depFloor = floorDisplay;
-    const vendorPart = depFigures.vendorUsd !== null
-      ? `Vendor: ${depCur} ${fmtMoney((depCur !== 'USD' && depFigures.vendorOrig !== null) ? depFigures.vendorOrig : depFigures.vendorUsd)}`
-      : `Vendor: ${depFigures.result.formula}`;
-    const floorReason = depFigures.boundByVendor
-      ? "matches vendor's own deposit requirement, which is above our 1-month minimum"
-      : 'Slasify\'s 1-month gross salary minimum';
-    depGuideText = `${vendorPart} — minimum required: ${depCur} ${fmtMoney(floorDisplay)} (${floorReason})`;
-  } else if (depFigures.reason === 'no-salary') {
-    depGuideText = 'Enter gross salary above to see the 1-month minimum floor.';
-  } else if (depFigures.reason === 'uncalculable') {
-    depGuideText = 'Vendor deposit terms not yet confirmed for this fee — cannot quote.';
-  } else if (depFigures.reason === 'no-fx') {
-    depGuideText = 'Loading live FX rates…';
-  } else {
-    depGuideText = 'Complex vendor deposit terms — no auto-computed floor. Check the reference terms above and enter your committed number directly.';
-  }
-
-  const depDisabled = depFigures.reason === 'uncalculable';
-  const depExisting = committedValues.deposit !== undefined ? committedValues.deposit : (depFigures.ok ? depFloor : '');
-
+  // Deposit is a plain description (never a dollar figure) - see computeDeposit() for the
+  // "preserve vendor wording unless it's below our 1-month minimum" logic.
+  const row = state.vendorRow;
+  const depositResult = computeFee(row.fees.deposit, 'deposit', row.serviceType);
+  const depNote = depositResult.wasBumped
+    ? ` (Slasify's 1-month minimum applied — vendor's own term was: "${depositResult.vendorRaw}")`
+    : '';
   html += `
     <div class="committed-fee-row">
       <div class="fee-name">${FEE_LABELS.deposit}</div>
-      <div class="guide-range">${escapeHtml(depGuideText)}</div>
-      <div class="input-row">
-        <input type="number" class="committed-input" data-fee="deposit" step="0.01" value="${depExisting}" ${depDisabled ? 'disabled' : ''}>
-        <span class="committed-currency">${depCur}</span>
-      </div>
-      <div class="margin-warning" id="warning-deposit" hidden></div>
+      <div class="guide-range">${escapeHtml(depositResult.formula + depNote)}</div>
+    </div>`;
+
+  // VAT is informational only, shown verbatim as entered in the MPD - no computation.
+  html += `
+    <div class="committed-fee-row">
+      <div class="fee-name">VAT</div>
+      <div class="guide-range">${escapeHtml(row.vat || 'N/A')}</div>
     </div>`;
 
   wrap.innerHTML = html;
@@ -592,20 +530,6 @@ function refreshCommittedWarning(target) {
   const warningEl = document.getElementById(`warning-${feeKey}`);
   const val = parseFloat(target.value);
 
-  if (feeKey === 'deposit') {
-    const figures = computeDepositFigures();
-    if (!figures.ok || isNaN(val)) { warningEl.hidden = true; return; }
-    const presentCur = presentationCurrencyFor('deposit');
-    const floor = (presentCur !== 'USD' && figures.floorOrig !== null) ? figures.floorOrig : figures.floorUsd;
-    if (floor !== null && val < floor) {
-      warningEl.hidden = false;
-      warningEl.textContent = `⚠ Below required minimum — deposit must be at least ${presentCur} ${fmtMoney(floor)} (1 month gross salary).`;
-    } else {
-      warningEl.hidden = true;
-    }
-    return;
-  }
-
   const figures = computeFeeFigures(feeKey);
   if (!figures.ok || isNaN(val)) { warningEl.hidden = true; return; }
 
@@ -630,12 +554,18 @@ function onGeneratePdfClick() {
   const paymentTerms = document.getElementById('payment-terms-input').value;
   const disclaimer = document.getElementById('disclaimer-input').value;
 
-  const feeRowsHtml = ALL_COMMITTED_KEYS.map((feeKey) => {
+  const feeRowsHtml = COMMITTED_FEE_KEYS.map((feeKey) => {
     const input = document.querySelector(`.committed-input[data-fee="${feeKey}"]`);
     const cur = presentationCurrencyFor(feeKey);
     const display = input && input.value !== '' ? `${cur} ${fmtMoney(parseFloat(input.value))}` : '—';
     return `<tr><td>${escapeHtml(FEE_LABELS[feeKey])}</td><td>${escapeHtml(display)}</td></tr>`;
   }).join('');
+
+  // Deposit and VAT are plain descriptions, not committed numbers - pulled straight from
+  // the underlying data (never the vendor's identity), verbatim where the MPD text applies.
+  const depositResult = computeFee(row.fees.deposit, 'deposit', row.serviceType);
+  const depositRowHtml = `<tr><td>${escapeHtml(FEE_LABELS.deposit)}</td><td>${escapeHtml(depositResult.formula)}</td></tr>`;
+  const vatRowHtml = `<tr><td>VAT</td><td>${escapeHtml(row.vat || 'N/A')}</td></tr>`;
 
   document.getElementById('print-quote').innerHTML = `
     <div class="doc-letterhead">
@@ -651,7 +581,7 @@ function onGeneratePdfClick() {
     <div class="doc-section-label">Fee Breakdown</div>
     <table class="doc-fee-table">
       <thead><tr><th>Item</th><th>Amount</th></tr></thead>
-      <tbody>${feeRowsHtml}</tbody>
+      <tbody>${feeRowsHtml}${depositRowHtml}${vatRowHtml}</tbody>
     </table>
 
     <div class="doc-section-label">Payment Terms</div>

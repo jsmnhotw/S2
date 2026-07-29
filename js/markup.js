@@ -94,29 +94,51 @@ function computeFlatMarginFee(fee, serviceType) {
   }
 }
 
-// Note: deposit itself carries no markup, but Slasify policy requires quoting at least
-// 1 month of gross salary regardless of the vendor's own terms (enforced in app.js's
-// computeDepositFigures) - so every case here needs grossSalary, even 'none', since that
-// floor still has to be expressed in dollars.
+const DEPOSIT_BASIS_PATTERNS = [
+  [/\bTEC\b/i, 'TEC'],
+  [/\bCTC\b/i, 'CTC'],
+  [/total\s+employment\s+cost/i, 'TEC'],
+  [/gross\s+salary/i, 'gross salary'],
+  [/\bemployment\s+cost\b/i, 'employment cost'],
+  [/\binvoice\b/i, 'invoice'],
+  [/\bsalary\b/i, 'salary'],
+];
+function extractDepositBasis(text) {
+  if (!text) return null;
+  for (const [pattern, label] of DEPOSIT_BASIS_PATTERNS) {
+    if (pattern.test(text)) return label;
+  }
+  return null;
+}
+
+// Deposit is a plain description, never a dollar figure - it carries no markup, and
+// Slasify policy requires quoting at least 1 month regardless of what the vendor itself
+// asks for. Vendor's own wording (fee.raw) is preserved verbatim whenever it already meets
+// that minimum; only when it's below 1 month or unspecified do we substitute a minimum
+// description. `wasBumped`/`vendorRaw` are for internal reference only (see app.js) - the
+// client-facing `formula` string never mentions the vendor's original term.
 function computeDeposit(fee) {
   switch (fee.kind) {
-    case 'none':
-      return { formula: 'No deposit required.', requiresInput: ['grossSalary'] };
     case 'months_salary':
+      if (fee.months >= 1) {
+        return { formula: fee.raw, requiresInput: [] };
+      }
       return {
-        formula: `${fee.months} month(s) of gross salary${fee.note ? ' — ' + fee.note : ''}`,
-        requiresInput: ['grossSalary'], months: fee.months,
+        formula: `1 month ${extractDepositBasis(fee.note) || 'salary'}`,
+        requiresInput: [], wasBumped: true, vendorRaw: fee.raw,
       };
+    case 'none':
+      return { formula: '1 month salary', requiresInput: [], wasBumped: true, vendorRaw: 'No deposit required.' };
     case 'flat':
-      return { formula: `${fee.currency} ${fmtMoney(fee.amount)}`, requiresInput: ['grossSalary'], vendorAmount: { currency: fee.currency, amount: fee.amount } };
+      return { formula: fee.raw, requiresInput: [] };
     case 'percent':
-      return { formula: `${fee.pct}% of ${fee.basis || 'Gross Salary/TEC (per vendor terms)'}`, requiresInput: ['grossSalary'], pct: fee.pct };
+      return { formula: fee.raw, requiresInput: [] };
     case 'unknown':
-      return { formula: 'Vendor deposit terms not yet confirmed (TBC).', requiresInput: [], uncalculable: true };
+      return { formula: 'Deposit terms not yet confirmed (TBC).', requiresInput: [], uncalculable: true };
     case 'llm':
-      return { formula: fee.slasifyFormula, requiresInput: Array.from(new Set([...(fee.requiresInput || []), 'grossSalary'])), isLlmDerived: true };
+      return { formula: fee.slasifyFormula, requiresInput: [], isLlmDerived: true };
     default:
-      return { formula: fee.raw || fee.kind, requiresInput: ['grossSalary'] };
+      return { formula: fee.raw || fee.kind, requiresInput: [] };
   }
 }
 
